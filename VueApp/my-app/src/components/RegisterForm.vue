@@ -1,0 +1,64 @@
+<template>
+    <v-card
+    elevation="24"
+    outlined
+    shaped
+    >
+    <v-card-title
+    class="
+    primary 
+    white--text
+    ">
+      Sign Up       
+    </v-card-title>
+    <v-container>
+        <form>
+                <v-text-field
+                v-model="email"
+                filled
+                prepend-inner-icon="mdi-email"
+                :error-messages="emailErrors"
+                label="E-mail"
+                :type="'email'"
+                required
+                @input="$v.email.$touch()"
+                @blur="$v.email.$touch()"
+                ></v-text-field>
+                <v-text-field
+                v-model="email"
+                filled
+                prepend-inner-icon="mdi-lock"
+                :error-messages="emailErrors"
+                label="Password"
+                :type="'password'"
+                required
+                @input="$v.email.$touch()"
+                @blur="$v.email.$touch()"
+                ></v-text-field>      
+                <v-text-field
+                v-model="email"
+                filled
+                prepend-inner-icon="mdi-lock"
+                :error-messages="emailErrors"
+                label="Confirm password"
+                :type="'password'"
+                required
+                @input="$v.email.$touch()"
+                @blur="$v.email.$touch()"
+                ></v-text-field>          
+                <v-btn
+                color="primary"
+                class="mr-4"
+                @click="submit"
+                >
+                Register
+                </v-btn>
+        </form>
+        </v-container>
+    </v-card>
+</template>
+<script>
+export default {
+    
+}
+</script>
