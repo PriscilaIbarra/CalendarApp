@@ -29,7 +29,7 @@ const routes = [
   }
   ,
   {
-    beforeEnter:(to,from,next) =>{       
+    beforeEnter:(to,from,next) =>{  alert(JSON.stringify(store.state.user.isAuthenticated))
       if(store.state.user.isAuthenticated){
         next()
         return 
