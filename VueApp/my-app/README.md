@@ -4,7 +4,10 @@
 ```
 yarn install
 ```
-
+### Compiles web development server and fake api
+```
+yarn start
+```
 ### Compiles and hot-reloads for development
 ```
 yarn serve

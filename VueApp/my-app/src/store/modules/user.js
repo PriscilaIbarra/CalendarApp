@@ -21,15 +21,13 @@ const actions = {
         commit('UPDATE_USER',input);        
     }
     ,
-    login({commit,state}){ api,commit,state       
-       commit('SET_USER',{email:state.user.email,status:'success',token:'aaaaaaaa123'});
-       router.push({path: "/dashboard"})
-       /* api.authUser(state.user).then(response=>{ 
-           commit('SET_USER',response.data);
-           router.push({path: "/dashboard"})
+    login({commit,state}){
+       api.authenticateUser(state.user).then(response=>{ 
+          commit('SET_USER',{email:response.data.user.email,status:response.data.status,token:response.data.token});
+          router.push({path: "/dashboard"})
         }).catch(e=>{ e 
            commit('notifications/NOTIFY_AUTH_ERROR','Wrong user or password',{root:true}) 
-        });*/
+        });
     }
 }
 

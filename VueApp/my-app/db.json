@@ -1,0 +1,15 @@
+{
+  "login": {
+    "status":"success",
+    "token":"aaaadfasdfasdfasdfasdfasdfasdfasdfasdf123123asdfasdfasdf",
+    "user":{
+        "email":"a@gmail.com"      
+    }
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Finsih homework"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import axios from 'axios'
 export default {
-    authUser(user){        
-         return axios.post('',user);
+    authenticateUser(user){        
+         return axios.get('http://localhost:3000/login',user);
     }
 }
