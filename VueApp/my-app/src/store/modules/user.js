@@ -7,7 +7,8 @@ const state = ()=>({
     token:'',
     user:{
         email:'',
-        password:''
+        password:'',
+        confirmPassword:''
     }
 })
 
@@ -21,26 +22,57 @@ const actions = {
         commit('UPDATE_USER',input);        
     }
     ,
-    login({commit,state}){
+    login({commit,state, dispatch}){ 
        api.authenticateUser(state.user).then(response=>{ 
-          commit('SET_USER',{email:response.data.user.email,status:response.data.status,token:response.data.token});
+          commit('CLEAN_USER_STATE'); 
+          commit('SET_USER',{email:response.data.user.email});
+          commit('LOGIN',{status:response.data.status,token:response.data.token})      
           router.push({path: "/dashboard"})
-        }).catch(e=>{ e 
-           commit('notifications/NOTIFY_AUTH_ERROR','Wrong user or password',{root:true}) 
+        }).catch(()=>{  
+          dispatch('notifications/notifyAuthError',{},{root:true}) 
         });
-    }
+    },
+    register({commit,state,dispatch}){
+        api.registerUser(state.user).then(()=>{ 
+            commit('CLEAN_USER_STATE');                      
+            dispatch('notifications/notifyRegisterSuccess',{},{root:true});
+        }).catch(e=>{
+            dispatch('notifications/notifyRegisterErrors',e.response.data.error,{root:true});
+        });    
+    },
+    logout({commit,state}){ 
+        api.logout({token:state.token, user:state.user}).then(()=>{
+            commit('CLEAN_USER_STATE');
+            commit('LOGOUT');}
+        )
+    }    
+
 }
 
 const mutations = {
     UPDATE_USER(state,input){
         state.user[input.name] = input.value      
-    },   
-    SET_USER(state,payload){
-        state.user.email = payload.email
+    },
+    CLEAN_USER_STATE(state){
+        state.user.email = ''
         state.user.password = ''
+        state.user.confirmPassword = ''
+        state.isAuthenticated = false
+        state.status = ''
+        state.token = ''
+    },    
+    SET_USER(state,payload){
+        state.user.email = payload.email        
+    },
+    LOGIN(state,payload){
         state.isAuthenticated = true
         state.status = payload.status
         state.token = payload.token
+    },
+    LOGOUT(state){       
+        state.isAuthenticated = false
+        state.status = ''
+        state.token = ''
     }
 }
 

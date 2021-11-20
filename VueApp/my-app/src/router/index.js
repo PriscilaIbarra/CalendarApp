@@ -44,6 +44,12 @@ const routes = [
         path:'/dashboard/calendar',
         name:'Calendar',
         component: Calendar
+      },
+      {
+        path:'/logout',
+        beforeEnter:(to,form,next)=>{
+          store.dispatch('user/logout').then(()=>next('/'))                
+        }
       }
     ]
   },

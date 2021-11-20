@@ -16,40 +16,31 @@
                 <v-text-field
                 v-model="email"
                 filled
-                prepend-inner-icon="mdi-email"
-                :error-messages="emailErrors"
+                prepend-inner-icon="mdi-email"               
                 label="E-mail"
                 :type="'email'"
-                required
-                @input="$v.email.$touch()"
-                @blur="$v.email.$touch()"
+                required               
                 ></v-text-field>
                 <v-text-field
-                v-model="email"
+                v-model="password"
                 filled
-                prepend-inner-icon="mdi-lock"
-                :error-messages="emailErrors"
+                prepend-inner-icon="mdi-lock"                
                 label="Password"
                 :type="'password'"
-                required
-                @input="$v.email.$touch()"
-                @blur="$v.email.$touch()"
+                required               
                 ></v-text-field>      
                 <v-text-field
-                v-model="email"
+                v-model="confirmation"
                 filled
-                prepend-inner-icon="mdi-lock"
-                :error-messages="emailErrors"
+                prepend-inner-icon="mdi-lock"              
                 label="Confirm password"
                 :type="'password'"
-                required
-                @input="$v.email.$touch()"
-                @blur="$v.email.$touch()"
+                required                
                 ></v-text-field>          
                 <v-btn
                 color="primary"
                 class="mr-4"
-                @click="submit"
+                @click="register"
                 >
                 Register
                 </v-btn>
@@ -59,6 +50,38 @@
 </template>
 <script>
 export default {
-    
+    computed:{    
+      email:{
+        get(){  
+         return this.$store.state.user.email
+        },
+        set(val){
+          this.$store.dispatch('user/updateUser',{name:'email',value:val});
+        }
+      }
+      ,
+     password:{
+        get(){ 
+          return this.$store.state.user.password
+        },
+        set(val){
+          this.$store.dispatch('user/updateUser',{name:'password',value:val})
+        }
+     },
+     confirmation:{
+        get(){
+          return this.$store.state.user.confirmPassword
+        },
+        set(val){
+          this.$store.dispatch('user/updateUser',{name:'confirmPassword',value:val})
+        }
+     }
+    }
+    ,
+    methods:{
+      register(){
+        this.$store.dispatch('user/register');
+      }
+    }
 }
 </script>

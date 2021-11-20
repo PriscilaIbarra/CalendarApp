@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import user from './modules/user'
 import notifications from './modules/notifications'
+import dashboard from './modules/dashboard'
 import VuexPersistence from 'vuex-persist'; //library to persist state object inside localStorage
 
 
@@ -14,7 +15,8 @@ const vuexLocal = new VuexPersistence({
 const store =  new Vuex.Store({  
   modules: {
     user:user,
-    notifications:notifications
+    notifications:notifications,
+    dashboard:dashboard
   }, 
   plugins: [vuexLocal.plugin],
 });

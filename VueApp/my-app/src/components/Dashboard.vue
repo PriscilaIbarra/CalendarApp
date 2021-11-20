@@ -17,27 +17,25 @@
             justify="space-around"
             class="mb-3"
         >
-            aaaaaaa@gmail.com
+            {{user.email}}
         </v-row>
     <v-divider></v-divider>
     <v-list nav dense>
-    <v-list-item-group
+          <v-list-item-group
           v-model="group"
           active-class="deep-purple--text text--accent-4"
-        >         
-          <v-list-item :link="'/tasks'">
-            <v-list-item-icon>
-              <v-icon>mdi-calendar-check</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Calendar</v-list-item-title>
-          </v-list-item>
-           <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-logout</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Logout</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
+          >         
+              <v-list-item 
+              v-for="option in menu.options"
+              :key="option.id"
+              :href="option.path"
+              >
+                <v-list-item-icon>
+                  <v-icon>{{option.icon}}</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>{{option.name}}</v-list-item-title>
+              </v-list-item>
+        </v-list-item-group>       
     </v-list>
     </v-navigation-drawer>
 
@@ -62,5 +60,13 @@
 <script>
   export default {
     data: () => ({ drawer: null }),
+    computed:{
+      user(){
+        return this.$store.state.user.user
+      },
+      menu(){
+        return this.$store.state.dashboard.menu
+      }
+    }
   }
 </script>
