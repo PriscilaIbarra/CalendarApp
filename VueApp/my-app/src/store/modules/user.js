@@ -23,10 +23,10 @@ const actions = {
     }
     ,
     login({commit,state, dispatch}){ 
-       api.authenticateUser(state.user).then(response=>{ 
+       api.authenticateUser(state.user).then(response=>{
           commit('CLEAN_USER_STATE'); 
-          commit('SET_USER',{email:response.data.user.email});
-          commit('LOGIN',{status:response.data.status,token:response.data.token})      
+          commit('SET_USER',{email:response.data[0].email});
+          commit('LOGIN',{status:'success',token:'aaaaaaaaaaa'})      
           router.push({path: "/dashboard"})
         }).catch(()=>{  
           dispatch('notifications/notifyAuthError',{},{root:true}) 
