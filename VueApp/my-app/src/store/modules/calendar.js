@@ -10,11 +10,10 @@ const state = ()=>({
         userId:1,
         id:0}
     ],    
+    showDialog:false
 })
 
-const getters = { 
-   
-}
+const getters = { }
 
 const actions = { 
     async getEvents({commit,dispatch},user){ 
@@ -23,14 +22,29 @@ const actions = {
         if(!error) commit('SET_EVENTS',eventsList) ;        
     }
     ,
+    showEventModalForm({commit}){
+        commit('SHOW_EVENT_MODAL_FORM');
+    }
+    ,
+    closeEventModalForm({commit}){
+        commit('CLOSE_EVENT_MODAL_FORM');
+    }
+    ,
     addEvent(){ 
        
     }
+    
 }
 
 const mutations = {
     SET_EVENTS(state,eventslist){
         state.events = eventslist
+    },
+    SHOW_EVENT_MODAL_FORM(state){
+        state.showDialog = true
+    },
+    CLOSE_EVENT_MODAL_FORM(state){
+        state.showDialog = false
     }
 }
 

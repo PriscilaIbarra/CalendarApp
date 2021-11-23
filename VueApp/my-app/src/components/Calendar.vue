@@ -46,16 +46,21 @@
         :event-overlap-mode="mode"
         :event-overlap-threshold="30"
         :event-color="getEventColor"
+        @click:date="showEventForm"        
         @change="getEvents"
       ></v-calendar>
     </v-sheet>
+    <EventModalForm/>
   </div>
 </template>
 <script>
-
+import EventModalForm from './EventModalForm.vue'
 import {mapState} from 'vuex'
 
 export default {
+  components:{
+    EventModalForm
+  },
   data:()=>({
     type: "month",
     types: ["month", "week", "day", "4day"],
@@ -86,6 +91,9 @@ export default {
      })
   },
   methods: {
+    showEventForm(){
+      this.$store.dispatch('calendar/showEventModalForm');
+    },
     getEvents() { 
      return this.events
     },
