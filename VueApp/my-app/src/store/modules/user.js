@@ -6,15 +6,15 @@ const state = ()=>({
     status:'',
     token:'',
     user:{
+        id:'',
         email:'',
-        password:'',
-        confirmPassword:''
+        password:'',       
     }
 })
 
 const getters = {
      user: state => state.user,
-     isAuthenticated: state => !!state.token
+     isAuthenticated: state => !!state.token,   
 }
 
 const actions = {
@@ -25,15 +25,15 @@ const actions = {
     login({commit,state, dispatch}){ 
        api.authenticateUser(state.user).then(response=>{
           commit('CLEAN_USER_STATE'); 
-          commit('SET_USER',{email:response.data[0].email});
+          commit('SET_USER',{email:response.data[0].email,id:response.data[0].id});
           commit('LOGIN',{status:'success',token:'aaaaaaaaaaa'})      
           router.push({path: "/dashboard"})
         }).catch(()=>{  
           dispatch('notifications/notifyAuthError',{},{root:true}) 
         });
     },
-    register({commit,state,dispatch}){
-        api.registerUser(state.user).then(()=>{ 
+    register({commit,dispatch},user){
+        api.registerUser(user).then(()=>{ 
             commit('CLEAN_USER_STATE');                      
             dispatch('notifications/notifyRegisterSuccess',{},{root:true});
         }).catch(e=>{
@@ -55,14 +55,14 @@ const mutations = {
     },
     CLEAN_USER_STATE(state){
         state.user.email = ''
-        state.user.password = ''
-        state.user.confirmPassword = ''
+        state.user.password = ''       
         state.isAuthenticated = false
         state.status = ''
         state.token = ''
     },    
     SET_USER(state,payload){
-        state.user.email = payload.email        
+        state.user.email = payload.email  
+        state.user.id = payload.id      
     },
     LOGIN(state,payload){
         state.isAuthenticated = true

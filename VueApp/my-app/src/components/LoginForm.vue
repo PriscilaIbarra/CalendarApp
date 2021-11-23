@@ -12,23 +12,27 @@
       Sign In       
     </v-card-title>
     <v-container>
-        <form>
+        <v-form
+        ref="form"
+        v-model="valid"
+        >
                 <v-text-field
                 v-model="email"
                 filled
                 prepend-inner-icon="mdi-email"               
                 label="E-mail"
-                :type="'email'"
-                required        
-                ></v-text-field>
+                :type="'email'"                
+                :rules="emailRules"
+                 ></v-text-field>                
                 <v-text-field
                 v-model="password"
                 filled
                 prepend-inner-icon="mdi-lock"               
                 label="Password"
                 :type="'password'"
-                autocomplete="true" 
-                required               
+                autocomplete="true"               
+                :rules="passwordRules" 
+                v-on:keyup.enter="login"
                 ></v-text-field>               
                 <v-btn
                 color="primary"
@@ -37,20 +41,29 @@
                 >
                 Sign In
                 </v-btn>
-        </form>       
+        </v-form>    
         </v-container>
     </v-card>
 </template>
 <script>
-
 export default {   
+    data:()=>({  
+      valid:true,   
+      emailRules:[
+        v=>!!v||'Email is required',
+        v=> /.+@.+\..+/.test(v) ||'Invalid format'
+      ],
+      passwordRules:[
+        v=>!!v||'Password is required'
+      ]
+    }),
     computed:{    
       email:{
-        get(){  
+        get(){
          return this.$store.state.user.email
         },
         set(val){
-          this.$store.dispatch('user/updateUser',{name:'email',value:val});
+          this.$store.dispatch('user/updateUser',{name:'email',value:val.trim()});
         }
       }
       ,
@@ -59,14 +72,13 @@ export default {
           return this.$store.state.user.password
         },
         set(val){
-          this.$store.dispatch('user/updateUser',{name:'password',value:val})
+          this.$store.dispatch('user/updateUser',{name:'password',value:val.trim()});
         }
-     }
-  
-    },
+     }     
+    },    
     methods:{
       login(){
-        this.$store.dispatch('user/login');       
+        if(this.$refs.form.validate())this.$store.dispatch('user/login'); 
       }
     }
 }

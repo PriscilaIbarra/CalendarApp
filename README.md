@@ -42,3 +42,8 @@ server.listen(3000, () => console.log('Server is listening on PORT 3000'))
 }
 
 ### yarn start
+
+### adding vuelidate for form validation 
+### npm install vuelidate --save
+ 
+### yarn add vee-validate

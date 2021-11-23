@@ -11,7 +11,7 @@
             size="80"
             >
                 <span class="white--text text-h5">
-                  {{user.email.substring(0,2)}}
+                  {{user.email.split('@')[0].substring(0,2)}}
                 </span>
             </v-avatar>
         </v-row>
