@@ -1,16 +1,29 @@
 import api from '../../api/api'
 
 const state = ()=>({   
-    events: [
-        {name:"Prueba",
-        start:new Date("2021-11-22T19:00:00.000Z"),
-        end: new Date("2021-11-22T20:00:00.000Z"),
-        color:"green",
-        timed:"true",
-        userId:1,
-        id:0}
-    ],    
-    showDialog:false
+    events: [],   
+    showDialog:false,
+    event:{
+        name:'',
+        startDate:'',
+        startTime:'',
+        endDate:'',
+        endTime:'',
+        color:'',
+        timed:'',
+        userId:'',
+        id:''
+    },
+    colors:[
+      "blue",
+      "teal lighten-2",
+      "yellow",
+      "cyan",
+      "green",
+      "orange",
+      "grey darken-1",
+      "red lighten-1"
+    ],
 })
 
 const getters = { }
@@ -30,6 +43,9 @@ const actions = {
         commit('CLOSE_EVENT_MODAL_FORM');
     }
     ,
+    updateEvent({commit},input){ 
+        commit('UPDATE_EVENT',input);
+    },
     addEvent(){ 
        
     }
@@ -45,6 +61,9 @@ const mutations = {
     },
     CLOSE_EVENT_MODAL_FORM(state){
         state.showDialog = false
+    },
+    UPDATE_EVENT(state,input){
+        state.event[input.name] = input.value
     }
 }
 

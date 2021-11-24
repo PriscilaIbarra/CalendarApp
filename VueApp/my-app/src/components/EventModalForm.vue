@@ -4,10 +4,11 @@
           transition="dialog-top-transition"
           max-width="600"
         >       
-            <v-card>
+            <v-card
+            rounded="t-xl"
+            >
               <v-toolbar
-              color="white"
-              dark
+              :color="!!color?color:'white'"
               >              
                     <v-btn
                     icon      
@@ -39,7 +40,8 @@ export default {
     },
     computed:{
         ...mapState({
-            show : state => state.calendar.showDialog
+            show : state => state.calendar.showDialog,
+            color: state =>state.calendar.event.color
         })
     },
     methods:{

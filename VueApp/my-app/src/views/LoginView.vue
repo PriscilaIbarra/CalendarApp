@@ -7,7 +7,9 @@
             md="8"
             lg="6"
             >
-              <login-form/>
+              <login-form 
+              class="animate__animated animate__slideInLeft"
+              />
               <v-alert
               class="mt-2"
               border="top"

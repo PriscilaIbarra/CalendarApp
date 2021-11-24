@@ -49,7 +49,7 @@
         @click:date="showEventForm"        
         @change="getEvents"
       ></v-calendar>
-    </v-sheet>
+    </v-sheet>    
     <EventModalForm/>
   </div>
 </template>
@@ -74,20 +74,11 @@ export default {
       { text: "Mon, Wed, Fri", value: [1, 3, 5] }
     ],
     value: "",    
-    colors: [
-      "blue",
-      "indigo",
-      "deep-purple",
-      "cyan",
-      "green",
-      "orange",
-      "grey darken-1",
-      "red"
-    ],
   }),
   computed:{
     ...mapState({        
-        events: state =>state.calendar.events
+        events: state =>state.calendar.events,
+        colors: state=>state.calendar.colors
      })
   },
   methods: {
