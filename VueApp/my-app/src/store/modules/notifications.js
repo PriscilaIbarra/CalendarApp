@@ -2,14 +2,16 @@ const state = () =>({
     authError: '',
     registerErrors: [],
     registerSuccess: '',
-    getEventsError:''
+    getEventsError:'',
+    addEventError:''
 })
 
 const getters = {
     authError : state =>state.authError,
     registerErrors: state =>state.registerErrors,
     registerSuccess: state=>state.registerSuccess,
-    getEventsError: state=>state.getEventsError
+    getEventsError: state=>state.getEventsError,
+    addEventError:state=>state.addEventError
 }
 
 const actions = {
@@ -24,6 +26,9 @@ const actions = {
    },
    notifyGetEventsError({commit},errors){
     commit('NOTIFY',{name:'getEventsError',content:errors})   
+   },
+   notifyAddEventError({commit},error){
+    commit('NOTIFY',{name:'addEventError',content:error});
    },
    cleanNotification({commit},msgName){ 
     commit('CLEAN',msgName);

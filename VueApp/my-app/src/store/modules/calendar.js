@@ -1,7 +1,7 @@
 import api from '../../api/api'
 
 const state = ()=>({   
-    events: [],   
+    events: [],  
     showDialog:false,
     event:{
         name:'',
@@ -10,7 +10,7 @@ const state = ()=>({
         endDate:'',
         endTime:'',
         color:'',
-        timed:'',
+        timed:true,
         userId:'',
         id:''
     },
@@ -33,6 +33,7 @@ const actions = {
         const [error,eventsList] = await api.getEvents(user)
         if(error) dispatch('notifications/notifyGetEventsError',error,{root:true})
         if(!error) commit('SET_EVENTS',eventsList) ;        
+        if(!error) commit('SET_EVENT',user.id);
     }
     ,
     showEventModalForm({commit}){
@@ -43,11 +44,24 @@ const actions = {
         commit('CLOSE_EVENT_MODAL_FORM');
     }
     ,
+    cleanEventModalForm({commit}){
+        commit('CLEAN_EVENT_MODAL_FORM');
+    }
+    ,
     updateEvent({commit},input){ 
         commit('UPDATE_EVENT',input);
     },
-    addEvent(){ 
-       
+    async addEvent({dispatch,state}){ 
+       const [error] = await api.addEvent(state.event); 
+       if(error){
+            dispatch('notifications/notifyAddEventError',error,{root:true});
+       }
+       else{
+         dispatch('getEvents',state.user);
+         dispatch('closeEventModalForm');
+         dispatch('cleanEventModalForm');
+       }
+      
     }
     
 }
@@ -62,8 +76,24 @@ const mutations = {
     CLOSE_EVENT_MODAL_FORM(state){
         state.showDialog = false
     },
+    SET_EVENT(state,userId){
+        state.event.userId = userId
+    },
     UPDATE_EVENT(state,input){
         state.event[input.name] = input.value
+    },
+    CLEAN_EVENT_MODAL_FORM(state){
+       state.event = {
+        name:'',
+        startDate:'',
+        startTime:'',
+        endDate:'',
+        endTime:'',
+        color:'',
+        timed:true,
+        userId:'',
+        id:''
+        }
     }
 }
 

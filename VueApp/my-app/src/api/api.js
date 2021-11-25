@@ -22,7 +22,17 @@ export default {
          return  [e,null] 
        }
     },
-    addEvent(event){
-        return axios.post('http://localhost:3000/events',event);
+    async addEvent(ev){
+        try
+        { 
+          let event = normalizer.normalizeEvent(ev); 
+          const response = await axios.post('http://localhost:3000/events',event);
+          return [null,response.data.status]
+        }
+        catch(e)
+        {
+            return [e]
+        }
+       
     }
 }

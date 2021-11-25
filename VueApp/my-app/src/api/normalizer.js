@@ -12,5 +12,25 @@ export default {
             })
         });               
         return eventList
-    },    
+    },
+    normalizeEvent(e){
+        try
+        {   
+            let isoStartDate = new Date(e.startDate+'T'+e.startTime).toISOString();
+            let isoEndDate = new Date(e.endDate+'T'+e.endTime).toISOString();
+            let event = {
+                name:e.name,
+                start:isoStartDate,
+                end:isoEndDate,
+                color:e.color,
+                timed:e.timed,
+                userId:e.userId
+            }
+            return event
+        }
+        catch(e)
+        {
+          return e
+        }
+    }    
 }

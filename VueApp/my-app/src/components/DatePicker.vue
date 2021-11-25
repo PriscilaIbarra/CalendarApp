@@ -30,7 +30,7 @@ import {mapState} from 'vuex'
 
 export default {
     data:()=>({        
-        menu2: true
+        menu2: false
     }),
     props:['label'],
     computed: {

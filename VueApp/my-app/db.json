@@ -13,15 +13,60 @@
       "id": 2
     }
   ],
-  "events":[
+  "events": [
     {
-      "name":"Prueba",
-      "start":"2021-11-23T09:00:00.000Z",
+      "name": "Prueba",
+      "start": "2021-11-23T09:00:00.000Z",
       "end": "2021-11-23T10:00:00.000Z",
-      "color":"green",
-      "timed":"true",
-      "userId":1,
-      "id":1
+      "color": "green",
+      "timed": "true",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "Test",
+      "start": "2021-11-26T15:30:00.000Z",
+      "end": "2021-11-27T05:00:00.000Z",
+      "color": "teal lighten-2",
+      "timed": "true",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "name": "Do homework",
+      "start": "2021-11-27T12:00:00.000Z",
+      "end": "2021-11-27T14:00:00.000Z",
+      "color": "orange",
+      "timed": "true",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "name": "adsfasdf",
+      "start": "2021-11-28T03:00:00.000Z",
+      "end": "2021-11-28T05:30:00.000Z",
+      "color": "teal lighten-2",
+      "timed": "true",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "name": "asdfasdfasdf",
+      "start": "2021-11-28T03:30:00.000Z",
+      "end": "2021-11-28T05:30:00.000Z",
+      "color": "green",
+      "timed": "true",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "ASDFASDFASDFASDF",
+      "start": "2021-11-26T23:30:00.000Z",
+      "end": "2021-11-27T00:30:00.000Z",
+      "color": "red lighten-1",
+      "timed": true,
+      "userId": 1,
+      "id": 6
     }
   ],
   "logout": [

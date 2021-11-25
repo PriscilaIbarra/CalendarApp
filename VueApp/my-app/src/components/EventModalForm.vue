@@ -21,7 +21,7 @@
                     <v-btn
                     class="rounded-pill"
                     color="primary"
-                    @click="close"
+                    @click="add"
                     >Add</v-btn>
               </v-toolbar>
               <v-card-text>
@@ -47,6 +47,9 @@ export default {
     methods:{
         close(){
             this.$store.dispatch('calendar/closeEventModalForm');
+        },
+        add(){
+          this.$store.dispatch('calendar/addEvent');
         }
     }
 }
