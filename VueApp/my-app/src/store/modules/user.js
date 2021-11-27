@@ -22,29 +22,32 @@ const actions = {
         commit('UPDATE_USER',input);        
     }
     ,
-    login({commit,state, dispatch}){ 
-       api.authenticateUser(state.user).then(response=>{
+    async login({commit,state, dispatch})
+    { 
+       const [data,error] = await api.authenticateUser(state.user);
+       if(!error)
+       {
           commit('CLEAN_USER_STATE'); 
-          commit('SET_USER',{email:response.data[0].email,id:response.data[0].id});
-          commit('LOGIN',{status:'success',token:'aaaaaaaaaaa'})      
+          commit('SET_USER',data.user);
+          commit('LOGIN',{status:'success',token:data.accessToken})      
           router.push({path: "/dashboard"})
-        }).catch(()=>{  
+       }
+       else
+       {
           dispatch('notifications/notifyAuthError',{},{root:true}) 
-        });
+       }
     },
-    register({commit,dispatch},user){
-        api.registerUser(user).then(()=>{ 
-            commit('CLEAN_USER_STATE');                      
-            dispatch('notifications/notifyRegisterSuccess',{},{root:true});
-        }).catch(e=>{
-            dispatch('notifications/notifyRegisterErrors',e.response.data.error,{root:true});
-        });    
+    async register({dispatch},user)
+    {
+        const [error] = await api.registerUser(user);
+        if(!error) dispatch('notifications/notifyRegisterSuccess',{},{root:true});
+        if(error) dispatch('notifications/notifyRegisterError',error,{root:true});
     },
-    logout({commit,state}){ 
-        api.logout({token:state.token, user:state.user}).then(()=>{
-            commit('CLEAN_USER_STATE');
-            commit('LOGOUT');}
-        )
+    async logout({commit,state}){ 
+        const [error] = await api.logout({token:state.token, user:state.user});
+        if(error)console.log(error);
+        commit('CLEAN_USER_STATE');
+        commit('LOGOUT');
     }    
 
 }

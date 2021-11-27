@@ -54,9 +54,9 @@ const actions = {
     async addEvent({dispatch,state}){ 
        const [error] = await api.addEvent(state.event); 
        if(error){
-            dispatch('notifications/notifyAddEventError',error,{root:true});
+         dispatch('notifications/notifyAddEventError',error,{root:true});
        }
-       else{
+       else {
          dispatch('getEvents',state.user);
          dispatch('closeEventModalForm');
          dispatch('cleanEventModalForm');

@@ -128,7 +128,8 @@ export default {
       },
       register(){       
         if(!this.$v.user.$invalid){
-            this.$store.dispatch('user/register',this.user);
+            let newUser = {"email":this.user.email,"password":this.user.password};
+            this.$store.dispatch('user/register',newUser);
             this.clean();                                  
         }       
       },     

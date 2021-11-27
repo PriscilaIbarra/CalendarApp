@@ -1,6 +1,10 @@
 <template>
-    <v-spacer>
-        <v-container>
+    <v-spacer class="mt-n8">
+        <v-container 
+        :md="8"
+        :sm="8"
+        :xs="8"
+        >
             <v-alert
               class="mt-1"
               border="top"

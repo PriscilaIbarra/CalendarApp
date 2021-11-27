@@ -61,7 +61,7 @@
 
 <script>
   export default {
-    data: () => ({ drawer: null }),
+    data: () => ({ drawer: false }),
     computed:{
       user(){
         return this.$store.state.user.user

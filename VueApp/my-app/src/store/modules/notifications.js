@@ -1,6 +1,6 @@
 const state = () =>({
     authError: '',
-    registerErrors: [],
+    registerError: '',
     registerSuccess: '',
     getEventsError:'',
     addEventError:''
@@ -8,7 +8,7 @@ const state = () =>({
 
 const getters = {
     authError : state =>state.authError,
-    registerErrors: state =>state.registerErrors,
+    registerError: state =>state.registerError,
     registerSuccess: state=>state.registerSuccess,
     getEventsError: state=>state.getEventsError,
     addEventError:state=>state.addEventError
@@ -21,8 +21,8 @@ const actions = {
    notifyRegisterSuccess({commit}){
     commit('NOTIFY',{name:'registerSuccess',content:'The user has been registered successfuly'});
    },
-   notifyRegisterErrors({commit},errors){
-    commit('NOTIFY',{name:'registerErrors',content:errors});
+   notifyRegisterError({commit},error){
+    commit('NOTIFY',{name:'registerError',content:error});
    },
    notifyGetEventsError({commit},errors){
     commit('NOTIFY',{name:'getEventsError',content:errors})   

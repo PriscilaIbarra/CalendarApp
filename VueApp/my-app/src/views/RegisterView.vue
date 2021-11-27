@@ -8,50 +8,25 @@
             lg="6"
             >
              <register-form
-             class="animate__animated animate__slideInLeft"
+             class="animate__animated 
+             animate__slideInLeft"
              />
-              <v-alert
-              class="mt-2"
-              border="top"
-              color="green"
-              dismissible
-              type="success"             
-              v-if="msg"              
-              >
-              {{msg}}
-                <template v-slot:close="{toggle}">
-                     <v-btn 
-                     icon
-                     fab x-small
-                     color="bg-black"
-                     dark
-                     @click="close(toggle)">
-                         <v-icon>
-                             mdi-close
-                        </v-icon>
-                     </v-btn>   
-                </template>
-              </v-alert>
+             <register-success-alert/>
+             <register-error-alert/>
             </v-col>
          </v-row>
      </v-container>        
 </template>
 <script>
 import RegisterForm from '../components/RegisterForm.vue'
+import RegisterSuccessAlert from '../components/RegisterSuccessAlert';
+import RegisterErrorAlert from '../components/RegisterErrorAlert';
+
 export default {
     components:{
-        RegisterForm
+        RegisterForm,
+        RegisterSuccessAlert,
+        RegisterErrorAlert
     },
-    computed:{
-      msg(){ 
-          return this.$store.state.notifications.registerSuccess
-      }  
-    },
-    methods:{
-        close(toggle){
-            this.$store.dispatch('notifications/cleanNotification','registerSuccess')
-            toggle()
-        }
-    }
 }
 </script>

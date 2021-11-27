@@ -41,6 +41,9 @@ server.listen(3000, () => console.log('Server is listening on PORT 3000'))
 "node": "node server.js"
 }
 
+### Add json-server authentication service
+### yarn add json-server-auth
+
 ### yarn start
 
 ### adding vuelidate for form validation 

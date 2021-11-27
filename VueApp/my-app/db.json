@@ -2,80 +2,37 @@
   "users": [
     {
       "email": "a@gmail.com",
-      "password": "123123123",
-      "confirmation": "123123123",
+      "password": "$2a$10$8qluoAJK6212L.z4g9pjfuFqCB6iQWHOdA7FVDiq.J.rUx97EQGta",
       "id": 1
     },
     {
-      "email": "newuser@gmail.com",
-      "password": "12345678",
-      "confirmation": "12345678",
+      "email": "asd@gmail.com",
+      "password": "$2a$10$8qwBa0eBnJsrP0ryAIOe4.Qompfc9jq5f5OU7.eshC82WoUiJZAOW",
       "id": 2
+    },
+    {
+      "email": "ab@gmail.com",
+      "password": "$2a$10$1fa1xgzxdQ2hh0PvB6tM8OMliCWtZggety.YF1ugHA13zPa4.1mm2",
+      "id": 3
+    },
+    {
+      "email": "as@gmail.com",
+      "password": "$2a$10$afX/F1bLEWhQioRUhasv7uG1uNEtMNT60O1IB2bJoQ.EtgEJ.Jete",
+      "id": 4
     }
   ],
   "events": [
     {
-      "name": "Prueba",
-      "start": "2021-11-23T09:00:00.000Z",
-      "end": "2021-11-23T10:00:00.000Z",
+      "name": "Homework",
+      "start": "2021-11-27T13:00:00.000Z",
+      "end": "2021-11-27T13:30:00.000Z",
       "color": "green",
-      "timed": "true",
-      "userId": 1,
-      "id": 1
-    },
-    {
-      "name": "Test",
-      "start": "2021-11-26T15:30:00.000Z",
-      "end": "2021-11-27T05:00:00.000Z",
-      "color": "teal lighten-2",
-      "timed": "true",
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "name": "Do homework",
-      "start": "2021-11-27T12:00:00.000Z",
-      "end": "2021-11-27T14:00:00.000Z",
-      "color": "orange",
-      "timed": "true",
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "name": "adsfasdf",
-      "start": "2021-11-28T03:00:00.000Z",
-      "end": "2021-11-28T05:30:00.000Z",
-      "color": "teal lighten-2",
-      "timed": "true",
-      "userId": 1,
-      "id": 4
-    },
-    {
-      "name": "asdfasdfasdf",
-      "start": "2021-11-28T03:30:00.000Z",
-      "end": "2021-11-28T05:30:00.000Z",
-      "color": "green",
-      "timed": "true",
-      "userId": 1,
-      "id": 5
-    },
-    {
-      "name": "ASDFASDFASDFASDF",
-      "start": "2021-11-26T23:30:00.000Z",
-      "end": "2021-11-27T00:30:00.000Z",
-      "color": "red lighten-1",
       "timed": true,
       "userId": 1,
-      "id": 6
+      "id": 1
     }
   ],
   "logout": [
     {}
-  ],
-  "tasks": [
-    {
-      "id": 1,
-      "name": "Finsih homework"
-    }
   ]
 }
