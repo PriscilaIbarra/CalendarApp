@@ -43,7 +43,8 @@ const actions = {
         if(!error) dispatch('notifications/notifyRegisterSuccess',{},{root:true});
         if(error) dispatch('notifications/notifyRegisterError',error,{root:true});
     },
-    async logout({commit,state}){ 
+    async logout({commit,state})
+    { 
         const [error] = await api.logout({token:state.token, user:state.user});
         if(error)console.log(error);
         commit('CLEAN_USER_STATE');
