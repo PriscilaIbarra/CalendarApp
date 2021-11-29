@@ -1,5 +1,8 @@
 <template>
-    <v-container>
+    <v-app
+    >
+    <v-container 
+    >
          <v-row justify="center">
             <v-col
             cols="12"
@@ -33,8 +36,9 @@
                 </template>
               </v-alert>
             </v-col>
-         </v-row>    
+         </v-row> 
     </v-container>
+    </v-app>
 </template>
 <script>
 import LoginForm from '../components/LoginForm.vue'
@@ -54,6 +58,5 @@ export default {
             toggle()
         }
     }
-
 }
 </script>   

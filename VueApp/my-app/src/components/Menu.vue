@@ -1,23 +1,25 @@
 <template>
   <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <v-btn
+        icon
+        href="/"
+        >
+          <v-icon
+          :size="40">
+            mdi-calendar
+          </v-icon>
+        </v-btn>
+        <p
+        class="
+        text--white
+        text-h6
+        ml-2
+        mr-2 mt-3
+        "
+        >
+        CalendarApp
+        <p/>
       </div>
 
       <v-spacer></v-spacer>

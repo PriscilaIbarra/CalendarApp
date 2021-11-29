@@ -46,7 +46,8 @@
         :event-overlap-mode="mode"
         :event-overlap-threshold="30"
         :event-color="getEventColor"
-        @click:date="showEventForm"        
+        @click:date="showEventForm"    
+        @click:event="showEvent"    
         @change="getEvents"
       ></v-calendar>
     </v-sheet>    
@@ -82,11 +83,14 @@ export default {
      })
   },
   methods: {
+    showEvent({event}){ alert(JSON.stringify(event));
+      this.$store.dispatch('calendar/setEvent',event);
+    },
     showEventForm(){
       this.$store.dispatch('calendar/showEventModalForm');
     },
-    getEvents() { 
-     return this.events
+    getEvents() {
+      return this.events;
     },
     getEventColor(event) {
       return event.color;

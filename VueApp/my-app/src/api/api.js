@@ -1,15 +1,17 @@
 import axios from 'axios'
 import normalizer from './normalizer'
+import store from '../store';
 
 const axiosConfig = axios.create({
     baseURL:'http://localhost:3000',
 });
 
 export default {
-    getHeaders(token){
+    getHeaders(){
         return {
             headers:{
-                'Authorizations': `${token}`
+                'Content-type':'application/json;charset=UTF-8',
+                'Authorization': 'Bearer '+`${store.state.user.token}`
             }
         }
     }
@@ -38,11 +40,11 @@ export default {
             return [null,e.response.data]
         }
     },
-    async logout(userData)
+    async logout(user)
     {  
         try
         {
-          const response = await axiosConfig.get('/logout',userData);  
+          const response = await axiosConfig.get('/logout',user);  
           return [null, response.data]
         }
         catch(e)
@@ -54,7 +56,7 @@ export default {
     {
        try
        { 
-        const response = await axiosConfig.get('/events?'+'userId='+user.id);   
+        const response = await axiosConfig.get('/events?'+'userId='+user.id,this.getHeaders());   
         return [null, normalizer.normalizeEvents(response.data)]
        }
        catch(e)
@@ -66,7 +68,7 @@ export default {
     {
         try
         {
-          const response = await axiosConfig.post('/events',normalizer.normalizeEvent(ev));
+          const response = await axiosConfig.post('/events',normalizer.normalizeEvent(ev),this.getHeaders());
           return [null,response.data.status]
         }
         catch(e)

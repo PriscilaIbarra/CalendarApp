@@ -1,21 +1,23 @@
 <template>
-     <v-container>
-         <v-row justify="center">
-            <v-col
-            cols="12"
-            sm="10"
-            md="8"
-            lg="6"
-            >
-             <register-form
-             class="animate__animated 
-             animate__slideInLeft"
-             />
-             <register-success-alert/>
-             <register-error-alert/>
-            </v-col>
-         </v-row>
-     </v-container>        
+    <v-app>
+        <v-container>
+            <v-row justify="center">
+                <v-col
+                cols="12"
+                sm="10"
+                md="8"
+                lg="6"
+                >
+                <register-form
+                class="animate__animated 
+                animate__slideInLeft"
+                />
+                <register-success-alert/>
+                <register-error-alert/>
+                </v-col>
+            </v-row>
+        </v-container>    
+     </v-app>    
 </template>
 <script>
 import RegisterForm from '../components/RegisterForm.vue'

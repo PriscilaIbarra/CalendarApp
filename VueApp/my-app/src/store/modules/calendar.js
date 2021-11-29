@@ -30,7 +30,7 @@ const getters = { }
 
 const actions = { 
     async getEvents({commit,dispatch},user){ 
-        const [error,eventsList] = await api.getEvents(user)
+        const [error,eventsList] = await api.getEvents(user);
         if(error) dispatch('notifications/notifyGetEventsError',error,{root:true})
         if(!error) commit('SET_EVENTS',eventsList) ;        
         if(!error) commit('SET_EVENT',user.id);
@@ -61,7 +61,6 @@ const actions = {
          dispatch('closeEventModalForm');
          dispatch('cleanEventModalForm');
        }
-      
     }
     
 }
