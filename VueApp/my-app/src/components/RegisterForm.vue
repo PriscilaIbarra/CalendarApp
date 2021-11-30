@@ -3,6 +3,9 @@
     elevation="24"
     outlined
     shaped
+    class="
+    animate__animated 
+    animate__slideInLeft"
     >
     <v-card-title
     class="
