@@ -68,7 +68,7 @@ export default{
     methods:{
         updateEvent(e){
             let selectedLabel = (this.label=='start'?'startTime':'endTime');
-            this.$store.dispatch('calendar/updateEvent',{name:selectedLabel,value:e});
+            this.$store.dispatch('calendar/updateEventAttributes',{name:selectedLabel,value:e});
         }
     }
 }

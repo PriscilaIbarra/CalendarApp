@@ -32,20 +32,13 @@
       "id": 1
     },
     {
-      "name": "Finish app",
-      "start": "2021-11-30T17:00:00.000Z",
-      "end": "2021-12-02T17:30:00.000Z",
-      "color": "orange",
-      "timed": true,
-      "userId": 1,
       "id": 2
     },
     {
       "name": "Test",
-      "start": "2021-11-27T16:30:00.000Z",
-      "end": "2021-11-27T17:30:00.000Z",
-      "color": "teal lighten-2",
-      "timed": true,
+      "start": "2021-11-28T15:30:00.000Z",
+      "end": "2021-11-28T18:30:00.000Z",
+      "color": "cyan",
       "userId": 1,
       "id": 3
     },
@@ -77,29 +70,16 @@
       "id": 6
     },
     {
-      "name": "aa",
-      "start": "2021-12-03T10:00:00.000Z",
-      "end": "2021-12-09T12:30:00.000Z",
-      "color": "red lighten-1",
-      "timed": true,
-      "userId": 1,
       "id": 7
     },
     {
-      "name": "Example",
-      "start": "2021-11-30T15:00:00.000Z",
-      "end": "2021-11-30T15:30:00.000Z",
-      "color": "green",
-      "timed": true,
-      "userId": 1,
       "id": 8
     },
     {
       "name": "asdfasdfasdf",
       "start": "2021-11-30T16:00:00.000Z",
       "end": "2021-11-30T16:30:00.000Z",
-      "color": "cyan",
-      "timed": true,
+      "color": "green",
       "userId": 1,
       "id": 9
     },
@@ -113,13 +93,13 @@
       "id": 10
     },
     {
-      "name": "asdfasdfadsf",
-      "start": "2021-12-02T15:30:00.000Z",
-      "end": "2021-12-02T16:30:00.000Z",
-      "color": "yellow",
-      "timed": true,
-      "userId": 1,
       "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
     }
   ],
   "logout": [

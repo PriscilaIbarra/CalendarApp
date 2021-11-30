@@ -38,7 +38,7 @@ export default{
     },
     methods:{
       selectColor(toggle,c){
-        this.$store.dispatch('calendar/updateEvent',{name:'color',value:c});
+        this.$store.dispatch('calendar/updateEventAttributes',{name:'color',value:c});
         toggle();
       }
     }

@@ -67,7 +67,7 @@ export default {
     async addEvent(ev)
     {
         try
-        {
+        { 
           const response = await axiosConfig.post('/events',normalizer.normalizeEvent(ev),this.getHeaders());
           return [null,response.data.status]
         }
@@ -76,11 +76,11 @@ export default {
             return [e]
         }
     },
-    async updateEvent(event)
+    async updateEvent(ev)
     {
       try
       {
-        const response = await axiosConfig.put('/events',event,this.getHeaders());
+        const response = await axiosConfig.put('/events/'+ev.id,normalizer.normalizeEventToUpdate(ev),this.getHeaders());
         return [null,response.data.status];
       }
       catch(e)

@@ -60,7 +60,7 @@ export default {
       updateEvent(e){
         this.menu2 = false;
         let  inputName = (this.label=='start'?'startDate':'endDate');
-        this.$store.dispatch('calendar/updateEvent',{name:inputName,value:e});
+        this.$store.dispatch('calendar/updateEventAttributes',{name:inputName,value:e});
       }
       ,
       formatDate (date) {

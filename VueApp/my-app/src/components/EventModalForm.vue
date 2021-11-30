@@ -78,7 +78,7 @@ export default {
           this.$store.dispatch('calendar/enableForm');
         },
         update(){
-
+          this.$store.dispatch('calendar/updateEvent');
         }
     }
 }

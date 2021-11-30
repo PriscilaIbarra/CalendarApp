@@ -96,16 +96,18 @@ const actions = {
         commit('HIDE_EDIT_EVENT_BTN');
     }
     ,
-    async updateEvent({dispatch,state}){
-      const [error] = api.updateEvent(state.event);
-      if(error){
+    async updateEvent({dispatch,state}){ 
+      const [error] = await api.updateEvent(state.event); 
+      if(error)
+      {
           dispatch('notifications/notifyUpdateEventError',error,{root:true});
       }
-      else{
+      else
+      {
           dispatch('notifications/notifyUpdateEventSuccess',{},{root:true});
           dispatch('closeEventModalForm');
           dispatch('cleanEventModalForm');
-          dispatch('getEvents');
+          dispatch('getEvents',store.state.user.user);
       }
     }
 }

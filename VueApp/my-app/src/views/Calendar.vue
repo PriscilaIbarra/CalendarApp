@@ -5,48 +5,21 @@
         :sm="8"
         :xs="8"
         >
-            <v-alert
-              class="mt-1"
-              border="top"
-              color="red"
-              dismissible
-              type="error"             
-              v-if="msg"              
-              >
-              {{msg}}
-                <template v-slot:close="{toggle}">
-                     <v-btn 
-                     icon
-                     fab x-small
-                     color="bg-black"
-                     dark
-                     @click="close(toggle)">
-                         <v-icon>
-                             mdi-close
-                        </v-icon>
-                     </v-btn>   
-                </template>
-              </v-alert>
+            <EventAlertSuccess/>
+            <EventAlertError/>
             <Calendar/>
         </v-container>
-    </v-spacer>
+    </v-spacer> 
 </template>
 <script>
 import Calendar from '../components/Calendar.vue'
+import EventAlertError from '../components/EventAlertError.vue'
+import EventAlertSuccess from '../components/EventAlertSuccess.vue'
 export default {
     components:{
-        Calendar
+        Calendar,
+        EventAlertError,
+        EventAlertSuccess
     },
-    computed:{
-      msg(){
-          return this.$store.state.notifications.getEventsError
-      }     
-    },
-    methods:{
-        close(toggle){
-            this.$store.dispatch('notifications/cleanNotification','getEventsError')
-            toggle()
-        }
-    }
 }
 </script>

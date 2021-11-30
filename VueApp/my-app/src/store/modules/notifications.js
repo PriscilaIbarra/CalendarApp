@@ -2,16 +2,16 @@ const state = () =>({
     authError: '',
     registerError: '',
     registerSuccess: '',
-    getEventsError:'',
-    addEventError:''
+    eventError:'',
+    eventSuccess:''
 })
 
 const getters = {
     authError : state =>state.authError,
     registerError: state =>state.registerError,
     registerSuccess: state=>state.registerSuccess,
-    getEventsError: state=>state.getEventsError,
-    addEventError:state=>state.addEventError
+    eventError: state=>state.eventError,
+    eventSuccess: state=>state.eventSuccess,
 }
 
 const actions = {
@@ -25,13 +25,19 @@ const actions = {
     commit('NOTIFY',{name:'registerError',content:error});
    },
    notifyGetEventsError({commit},errors){
-    commit('NOTIFY',{name:'getEventsError',content:errors})   
+    commit('NOTIFY',{name:'eventError',content:errors})   
    },
    notifyAddEventError({commit},error){
-    commit('NOTIFY',{name:'addEventError',content:error});
+    commit('NOTIFY',{name:'eventError',content:error});
    },
    notifySetEventError({commit},error){
-    commit('NOTIFY',{name:'addEventError',content:error});
+    commit('NOTIFY',{name:'eventError',content:error});
+   },
+   notifyUpdateEventError({commit,error}){
+    commit('NOTIFY',{name:'eventError',content:error})
+   },
+   notifyUpdateEventSuccess({commit}){
+    commit('NOTIFY',{name:'eventSuccess',content:'The event has been updated successfuly'})
    },
    cleanNotification({commit},msgName){ 
     commit('CLEAN',msgName);
