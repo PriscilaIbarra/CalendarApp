@@ -1,12 +1,15 @@
 <template>
      <v-container fluid>
+        <v-form 
+        :disabled="edit"
+        >
          <v-row>
              <v-col         
              >
               <v-text-field
               label="Add title"
               :value="name"
-              @input="updateEvent"
+              @input="updateEventAttributes"
               required
               ></v-text-field>  
              </v-col>
@@ -16,6 +19,7 @@
          <sup>To</sup>
          <DateTimePicker :label="'end'" class="mt-n6"/> 
          <ColorPicker/>
+         </v-form>
      </v-container>    
 </template>
 <script>
@@ -30,12 +34,13 @@ export default {
      },
      computed:{
        ...mapState({
-          name : state =>state.calendar.event.name 
+          name : state =>state.calendar.event.name,
+          edit : state=>state.calendar.showEditBtn 
         })
      },
      methods:{
-       updateEvent(e){ 
-         this.$store.dispatch('calendar/updateEvent',{name:'name',value: e})
+       updateEventAttributes(e){ 
+         this.$store.dispatch('calendar/updateEventAttributes',{name:'name',value: e})
        }
      }
 }

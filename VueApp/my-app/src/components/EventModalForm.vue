@@ -19,10 +19,30 @@
                     </v-btn>
                     <v-spacer/>
                     <v-btn
+                    v-if="showAddBtn"
                     class="rounded-pill"
                     color="primary"
                     @click="add"
-                    >Add</v-btn>
+                    >Add
+                    </v-btn>
+                    <v-btn
+                    v-if="showEditBtn"
+                    color="primary"
+                    fab
+                    small
+                    dark
+                    @click="edit"
+                    >
+                       <v-icon>
+                         mdi-pencil
+                       </v-icon>
+                    </v-btn>
+                    <v-btn
+                    v-else
+                    class="rounded-pill"
+                    color="primary"
+                    @click="update"
+                    >save</v-btn>
               </v-toolbar>
               <v-card-text>
                  <EventForm/>
@@ -41,15 +61,24 @@ export default {
     computed:{
         ...mapState({
             show : state => state.calendar.showDialog,
-            color: state =>state.calendar.event.color
+            color: state =>state.calendar.event.color,
+            showAddBtn:state=>state.calendar.showAddBtn,
+            showEditBtn:state=>state.calendar.showEditBtn,
         })
     },
     methods:{
         close(){
+            this.$store.dispatch('calendar/cleanEventModalForm');
             this.$store.dispatch('calendar/closeEventModalForm');
         },
         add(){
           this.$store.dispatch('calendar/addEvent');
+        },
+        edit(){
+          this.$store.dispatch('calendar/enableForm');
+        },
+        update(){
+
         }
     }
 }

@@ -83,7 +83,7 @@ export default {
      })
   },
   methods: {
-    showEvent({event}){ alert(JSON.stringify(event));
+    showEvent({event}){ 
       this.$store.dispatch('calendar/setEvent',event);
     },
     showEventForm(){

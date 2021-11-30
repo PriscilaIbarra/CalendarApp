@@ -75,5 +75,17 @@ export default {
         {
             return [e]
         }
+    },
+    async updateEvent(event)
+    {
+      try
+      {
+        const response = await axiosConfig.put('/events',event,this.getHeaders());
+        return [null,response.data.status];
+      }
+      catch(e)
+      {
+        return [e]
+      }
     }
 }

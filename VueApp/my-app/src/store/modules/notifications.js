@@ -30,6 +30,9 @@ const actions = {
    notifyAddEventError({commit},error){
     commit('NOTIFY',{name:'addEventError',content:error});
    },
+   notifySetEventError({commit},error){
+    commit('NOTIFY',{name:'addEventError',content:error});
+   },
    cleanNotification({commit},msgName){ 
     commit('CLEAN',msgName);
    }
