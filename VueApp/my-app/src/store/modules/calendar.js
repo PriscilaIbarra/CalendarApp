@@ -7,6 +7,7 @@ const state = ()=>({
     showDialog:false,
     showAddBtn:true,
     showEditBtn:false,
+    showSaveBtn:false,
     event:{
         name:'',
         startDate:'',
@@ -25,7 +26,7 @@ const state = ()=>({
       "cyan",
       "green",
       "orange",
-      "grey darken-1",
+      "pink accent-2",
       "red lighten-1"
     ],
 })
@@ -35,56 +36,33 @@ const getters = {
 }
 
 const actions = { 
-    async getEvents({commit,dispatch},user){ 
+    async getEvents({commit,dispatch},user)
+    { 
         const [error,eventsList] = await api.getEvents(user);
         if(error) dispatch('notifications/notifyGetEventsError',error,{root:true})
-        if(!error) commit('SET_EVENTS',eventsList) ;        
-        if(!error) commit('SET_USERID_EVENT',user.id);
+        if(!error) commit('SET_EVENTS',eventsList);  
     }
     ,
-    showEventModalForm({commit}){
+    showModalFormForAddEvent({commit})
+    {
+        commit('CLEAN_EVENT_MODAL_FORM');
+        commit('SHOW_ADD_EVENT_BTN');
+        commit('HIDE_EDIT_EVENT_BTN');
+        commit('HIDE_SAVE_EVENT_BTN');
+        commit('SET_USERID_EVENT',store.state.user.user.id)
         commit('SHOW_EVENT_MODAL_FORM');
     }
     ,
-    closeEventModalForm({commit}){
-        commit('CLOSE_EVENT_MODAL_FORM');
-        commit('SHOW_ADD_EVENT_BTN');
-    }
-    ,
-    cleanEventModalForm({commit}){
-        commit('CLEAN_EVENT_MODAL_FORM');
-    }
-    ,
-    updateEventAttributes({commit},input){ 
-        commit('UPDATE_EVENT_ATTR',input);
-    },
-    async addEvent({dispatch,state}){ 
-       const [error] = await api.addEvent(state.event); 
-       if(error){
-         dispatch('notifications/notifyAddEventError',error,{root:true});
-       }
-       else {
-         dispatch('getEvents',store.state.user.user);
-         dispatch('closeEventModalForm');
-         dispatch('cleanEventModalForm');
-       }
-    }
-    ,
-    showEditEventBtn({commit}){
-        commit('SHOW_EDIT_EVENT_BTN')
-    }
-    ,
-    hideAddEventBtn({commit}){
-        commit('HIDE_ADD_EVENT_BTN');
-    }
-    ,
-    setEvent({dispatch,commit},event){
+    showModalFormForEditEvent({dispatch,commit},event)
+    {
         try
         {
+          commit('CLEAN_EVENT_MODAL_FORM');
+          commit('HIDE_ADD_EVENT_BTN');
+          commit('SHOW_EDIT_EVENT_BTN');
+          commit('HIDE_SAVE_EVENT_BTN');
           commit('SET_EVENT',normalizer.formatEvent(event));
-          dispatch('hideAddEventBtn')
-          dispatch('showEditEventBtn');
-          dispatch('showEventModalForm');
+          commit('SHOW_EVENT_MODAL_FORM');
         }
         catch(e)
         {
@@ -94,9 +72,38 @@ const actions = {
     ,
     enableForm({commit}){ 
         commit('HIDE_EDIT_EVENT_BTN');
+        commit('SHOW_SAVE_EVENT_BTN');
     }
     ,
-    async updateEvent({dispatch,state}){ 
+    closeEventModalForm({commit}){
+        commit('CLOSE_EVENT_MODAL_FORM');
+    }
+    ,
+    cleanEventModalForm({commit}){
+        commit('CLEAN_EVENT_MODAL_FORM');
+    }
+    ,
+    updateEventAttributes({commit},input){ 
+        commit('UPDATE_EVENT_ATTR',input);
+    },
+    async addEvent({dispatch,state})
+    { 
+       const [error] = await api.addEvent(state.event); 
+       if(error)
+       {
+         dispatch('notifications/notifyAddEventError',error,{root:true});
+       }
+       else
+       {
+         dispatch('getEvents',store.state.user.user);
+         dispatch('closeEventModalForm');
+         dispatch('cleanEventModalForm');
+         dispatch('notifications/notifyAddEventSuccess',{},{root:true});
+       }
+    }
+    ,
+    async updateEvent({dispatch,state})
+    { 
       const [error] = await api.updateEvent(state.event); 
       if(error)
       {
@@ -155,7 +162,14 @@ const mutations = {
     },
     HIDE_EDIT_EVENT_BTN(state){
         state.showEditBtn = false;
+    },
+    SHOW_SAVE_EVENT_BTN(state){
+        state.showSaveBtn = true
+    },
+    HIDE_SAVE_EVENT_BTN(state){
+        state.showSaveBtn = false
     }
+
 }
 
 export default {

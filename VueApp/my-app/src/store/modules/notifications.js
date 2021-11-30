@@ -30,6 +30,9 @@ const actions = {
    notifyAddEventError({commit},error){
     commit('NOTIFY',{name:'eventError',content:error});
    },
+   notifyAddEventSuccess({commit}){
+    commit('NOTIFY',{name:'eventSuccess',content:'The event has been registed successfuly'});
+   },
    notifySetEventError({commit},error){
     commit('NOTIFY',{name:'eventError',content:error});
    },

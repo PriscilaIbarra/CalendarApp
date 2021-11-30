@@ -38,7 +38,7 @@
                        </v-icon>
                     </v-btn>
                     <v-btn
-                    v-else
+                    v-if="showSaveBtn"
                     class="rounded-pill"
                     color="primary"
                     @click="update"
@@ -64,6 +64,7 @@ export default {
             color: state =>state.calendar.event.color,
             showAddBtn:state=>state.calendar.showAddBtn,
             showEditBtn:state=>state.calendar.showEditBtn,
+            showSaveBtn: state=>state.calendar.showSaveBtn
         })
     },
     methods:{

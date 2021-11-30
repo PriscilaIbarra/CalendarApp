@@ -84,10 +84,10 @@ export default {
   },
   methods: {
     showEvent({event}){ 
-      this.$store.dispatch('calendar/setEvent',event);
+      this.$store.dispatch('calendar/showModalFormForEditEvent',event);
     },
     showEventForm(){
-      this.$store.dispatch('calendar/showEventModalForm');
+      this.$store.dispatch('calendar/showModalFormForAddEvent');
     },
     getEvents() {
       return this.events;
