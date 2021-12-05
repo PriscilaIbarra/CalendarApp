@@ -87,5 +87,17 @@ export default {
       {
         return [e]
       }
+    },
+    async deleteEvent(ev)
+    {
+      try
+      { 
+        const response  = await axiosConfig.delete('/events/'+ev.id,this.getHeaders());
+        return [null,response.data.status];
+      }
+      catch(e)
+      {
+        return [e.response.error]
+      }
     }
 }

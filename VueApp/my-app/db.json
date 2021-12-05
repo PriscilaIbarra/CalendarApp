@@ -23,39 +23,10 @@
   ],
   "events": [
     {
-      "name": "Homework123",
-      "start": "2021-12-01T15:00:00.000Z",
-      "end": "2021-12-01T17:30:00.000Z",
-      "color": "orange",
-      "userId": 1,
       "id": 1
     },
     {
-      "name": "Test",
-      "start": "2021-12-01T19:00:00.000Z",
-      "end": "2021-12-01T19:30:00.000Z",
-      "color": "green",
-      "timed": true,
-      "userId": "",
       "id": 2
-    },
-    {
-      "name": "Test app",
-      "start": "2021-11-30T14:00:00.000Z",
-      "end": "2021-11-30T16:30:00.000Z",
-      "color": "teal lighten-2",
-      "timed": true,
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "name": "Develop",
-      "start": "2021-11-30T16:00:00.000Z",
-      "end": "2021-11-30T17:00:00.000Z",
-      "color": "pink accent-2",
-      "timed": true,
-      "userId": 1,
-      "id": 4
     }
   ],
   "logout": [

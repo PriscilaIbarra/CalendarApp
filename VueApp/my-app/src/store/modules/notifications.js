@@ -31,7 +31,7 @@ const actions = {
     commit('NOTIFY',{name:'eventError',content:error});
    },
    notifyAddEventSuccess({commit}){
-    commit('NOTIFY',{name:'eventSuccess',content:'The event has been registed successfuly'});
+    commit('NOTIFY',{name:'eventSuccess',content:'The event has been registered successfuly'});
    },
    notifySetEventError({commit},error){
     commit('NOTIFY',{name:'eventError',content:error});
@@ -41,6 +41,12 @@ const actions = {
    },
    notifyUpdateEventSuccess({commit}){
     commit('NOTIFY',{name:'eventSuccess',content:'The event has been updated successfuly'})
+   },
+   notifyDeleteEventError({commit},error){
+      commit('NOTIFY',{name:'eventError',content:error}); 
+   },
+   notifyDeleteEventSuccess({commit}){
+     commit('NOTIFY',{name:'eventSuccess',content:'The event had been deleted successfully'})
    },
    cleanNotification({commit},msgName){ 
     commit('CLEAN',msgName);

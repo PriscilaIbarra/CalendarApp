@@ -8,6 +8,7 @@ const state = ()=>({
     showAddBtn:true,
     showEditBtn:false,
     showSaveBtn:false,
+    showDeleteDialog:false,
     event:{
         name:'',
         startDate:'',
@@ -83,6 +84,14 @@ const actions = {
         commit('CLEAN_EVENT_MODAL_FORM');
     }
     ,
+    showDeleteDialog({commit}){ 
+        commit('SHOW_DELETE_DIALOG');
+    }
+    ,
+    closeDeleteDialog({commit}){
+        commit('CLOSE_DELETE_DIALOG');
+    }
+    ,
     updateEventAttributes({commit},input){ 
         commit('UPDATE_EVENT_ATTR',input);
     },
@@ -116,6 +125,22 @@ const actions = {
           dispatch('cleanEventModalForm');
           dispatch('getEvents',store.state.user.user);
       }
+    },
+    async deleteEvent({dispatch,state})
+    {   
+        const [error] = await api.deleteEvent(state.event);
+        if(error)
+        {
+            dispatch('notifications/notifyDeleteEventError',error,{root:true});
+        }
+        else
+        {
+            dispatch('notifications/notifyDeleteEventSuccess',{},{root:true});
+            dispatch('closeDeleteDialog');
+            dispatch('closeEventModalForm');
+            dispatch('cleanEventModalForm');
+            dispatch('getEvents',store.state.user.user);
+        }
     }
 }
 
@@ -168,6 +193,14 @@ const mutations = {
     },
     HIDE_SAVE_EVENT_BTN(state){
         state.showSaveBtn = false
+    }
+    ,
+    SHOW_DELETE_DIALOG(state){
+        state.showDeleteDialog = true
+    }
+    ,
+    CLOSE_DELETE_DIALOG(state){
+        state.showDeleteDialog = false
     }
 
 }

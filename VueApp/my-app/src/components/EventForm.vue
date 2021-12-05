@@ -23,14 +23,15 @@
      </v-container>    
 </template>
 <script>
+import {mapState} from 'vuex'
 import DateTimePicker from './DateTimePicker.vue'
 import ColorPicker from './ColorPicker.vue'
-import {mapState} from 'vuex'
+
 
 export default {
      components:{
        DateTimePicker,
-       ColorPicker
+       ColorPicker,
      },
      computed:{
        ...mapState({

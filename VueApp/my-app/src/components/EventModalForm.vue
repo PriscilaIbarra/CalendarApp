@@ -45,18 +45,39 @@
                     >save</v-btn>
               </v-toolbar>
               <v-card-text>
-                 <EventForm/>
+                 <event-form/>
+                 <delete-event-dialog/>
               </v-card-text>
+              <v-card-actions 
+              class="mt-n4"
+              >
+                <v-spacer/>
+                 <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-icon
+                      color="red"
+                      v-if="!showAddBtn"
+                      v-bind="attrs"
+                      v-on="on"
+                      @click="deleteEvent"
+                      >
+                        mdi-delete
+                      </v-icon>
+                    </template>
+                    <span>Delete</span>
+                  </v-tooltip>
+              </v-card-actions>
             </v-card>        
         </v-dialog>
 </template>
 <script>
 import EventForm from './EventForm.vue'
+import DeleteEventDialog from './DeleteEventDialog.vue'
 import {mapState} from 'vuex'
-
 export default {
     components:{
-      EventForm
+      EventForm,
+      DeleteEventDialog
     },
     computed:{
         ...mapState({
@@ -69,8 +90,8 @@ export default {
     },
     methods:{
         close(){
-            this.$store.dispatch('calendar/cleanEventModalForm');
-            this.$store.dispatch('calendar/closeEventModalForm');
+          this.$store.dispatch('calendar/cleanEventModalForm');
+          this.$store.dispatch('calendar/closeEventModalForm');
         },
         add(){
           this.$store.dispatch('calendar/addEvent');
@@ -80,6 +101,9 @@ export default {
         },
         update(){
           this.$store.dispatch('calendar/updateEvent');
+        },
+        deleteEvent(){
+          this.$store.dispatch('calendar/showDeleteDialog');
         }
     }
 }
