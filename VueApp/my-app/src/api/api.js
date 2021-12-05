@@ -79,7 +79,7 @@ export default {
     async updateEvent(ev)
     {
       try
-      {
+      { 
         const response = await axiosConfig.put('/events/'+ev.id,normalizer.normalizeEventToUpdate(ev),this.getHeaders());
         return [null,response.data.status];
       }

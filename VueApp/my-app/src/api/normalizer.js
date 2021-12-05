@@ -34,24 +34,37 @@ export default {
           return e
         }
     },   
+    formatDate(dateTime){
+        //YYYY-MM-DD
+        var year = dateTime.getFullYear();
+        var month = (dateTime.getMonth()+1);
+        var day = ( dateTime.getDate().toString().length == 1 ? ('0'+dateTime.getDate()) : dateTime.getDate() );
+        return `${year}-${month}-${day}`
+    },
+    formatTime(dateTime){
+        //HH:mm
+        var hours = dateTime.getHours()
+        var minutes = ( dateTime.getMinutes() == 0 ? '00' : dateTime.getMinutes() );
+        return `${hours}:${minutes}`
+    },
     formatEvent(event){
         return {
             name:event.name,
-            startDate : `${event.start.getFullYear()}-${event.start.getMonth()+1}-${event.start.getDate()}`,
-            startTime : `${event.start.getHours()}:${event.start.getMinutes()==0?'00':event.start.getMinutes()}`,
-            endDate: `${event.end.getFullYear()}-${event.end.getMonth()+1}-${event.end.getDate()}`,
-            endTime: `${event.end.getHours()}:${event.end.getMinutes()==0?'00':event.end.getMinutes()}`,
+            startDate : this.formatDate(event.start),
+            startTime : this.formatTime(event.start),
+            endDate: this.formatDate(event.end),
+            endTime: this.formatTime(event.end),
             color: event.color,
-            id:event.id,
-            userId:event.userId
+            id: event.id,
+            userId: event.userId
           };
     },
     normalizeEventToUpdate(e)
     {
         try
         {   
-            let isoStartDate = new Date(e.startDate+'T'+e.startTime).toISOString();
-            let isoEndDate = new Date(e.endDate+'T'+e.endTime).toISOString();
+            let isoStartDate = new Date(e.startDate+'T'+e.startTime).toISOString(); 
+            let isoEndDate = new Date(e.endDate+'T'+e.endTime).toISOString(); 
             let event = {
                 name:e.name,
                 start:isoStartDate,
@@ -64,7 +77,7 @@ export default {
             return event
         }
         catch(e)
-        {
+        { 
           return e
         }
     }

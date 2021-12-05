@@ -51,21 +51,14 @@
               <v-card-actions 
               class="mt-n4"
               >
-                <v-spacer/>
-                 <v-tooltip bottom>
-                    <template v-slot:activator="{ on, attrs }">
+                 <v-spacer/>
                       <v-icon
                       color="red"
-                      v-if="!showAddBtn"
-                      v-bind="attrs"
-                      v-on="on"
+                      v-if="showDelBtn"
                       @click="deleteEvent"
                       >
                         mdi-delete
                       </v-icon>
-                    </template>
-                    <span>Delete</span>
-                  </v-tooltip>
               </v-card-actions>
             </v-card>        
         </v-dialog>
@@ -85,8 +78,9 @@ export default {
             color: state =>state.calendar.event.color,
             showAddBtn:state=>state.calendar.showAddBtn,
             showEditBtn:state=>state.calendar.showEditBtn,
-            showSaveBtn: state=>state.calendar.showSaveBtn
-        })
+            showSaveBtn: state=>state.calendar.showSaveBtn,
+            showDelBtn: state =>state.calendar.showDelBtn
+        }),
     },
     methods:{
         close(){

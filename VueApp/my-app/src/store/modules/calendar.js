@@ -6,6 +6,7 @@ const state = ()=>({
     events: [],  
     showDialog:false,
     showAddBtn:true,
+    showDelBtn:false,
     showEditBtn:false,
     showSaveBtn:false,
     showDeleteDialog:false,
@@ -33,7 +34,7 @@ const state = ()=>({
 })
 
 const getters = {
-    
+  
 }
 
 const actions = { 
@@ -50,7 +51,8 @@ const actions = {
         commit('SHOW_ADD_EVENT_BTN');
         commit('HIDE_EDIT_EVENT_BTN');
         commit('HIDE_SAVE_EVENT_BTN');
-        commit('SET_USERID_EVENT',store.state.user.user.id)
+        commit('HIDE_DELETE_EVENT_BTN');
+        commit('SET_USERID_EVENT',store.state.user.user.id);
         commit('SHOW_EVENT_MODAL_FORM');
     }
     ,
@@ -61,6 +63,7 @@ const actions = {
           commit('CLEAN_EVENT_MODAL_FORM');
           commit('HIDE_ADD_EVENT_BTN');
           commit('SHOW_EDIT_EVENT_BTN');
+          commit('SHOW_DELETE_EVENT_BTN');
           commit('HIDE_SAVE_EVENT_BTN');
           commit('SET_EVENT',normalizer.formatEvent(event));
           commit('SHOW_EVENT_MODAL_FORM');
@@ -181,6 +184,12 @@ const mutations = {
     },
     SHOW_ADD_EVENT_BTN(state){
       state.showAddBtn = true
+    },
+    HIDE_DELETE_EVENT_BTN(state){
+      state.showDelBtn = false
+    },
+    SHOW_DELETE_EVENT_BTN(state){
+      state.showDelBtn = true  
     },
     SHOW_EDIT_EVENT_BTN(state){
         state.showEditBtn = true;

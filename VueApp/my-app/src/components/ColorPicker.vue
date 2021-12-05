@@ -10,7 +10,7 @@
           >
             <v-item v-slot="{ active, toggle }">
               <v-btn
-                fab     
+                fab
                 rounded     
                 :color="c"
                 class="d-flex align-center"
@@ -32,12 +32,14 @@ import {mapState} from 'vuex'
 export default{
     computed:{
         ...mapState({
+            disableSelection: state=>state.calendar.showEditBtn,
             colors: state=>state.calendar.colors,
             selected: state=>state.calendar.event.color
         }),
     },
     methods:{
       selectColor(toggle,c){
+        if(this.disableSelection)return
         this.$store.dispatch('calendar/updateEventAttributes',{name:'color',value:c});
         toggle();
       }
