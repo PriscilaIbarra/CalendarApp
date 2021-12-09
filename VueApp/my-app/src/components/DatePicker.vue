@@ -13,6 +13,7 @@
               label=""
               hint="MM/DD/YYYY"
               persistent-hint
+              :rules="(label=='start'?dateFromRules:dateToRules)"
               prepend-icon="mdi-calendar"
               v-bind="attrs"
               v-on="on"
@@ -26,7 +27,7 @@
         </v-menu>
 </template>
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapGetters} from 'vuex'
 
 export default {
     data:()=>({        
@@ -37,6 +38,10 @@ export default {
       ...mapState({
          dateStart: state=>state.calendar.event.startDate,
          dateEnd: state=>state.calendar.event.endDate
+      }),
+      ...mapGetters({
+        dateFromRules:'calendar/dateFromRules',
+        dateToRules:'calendar/dateToRules'
       }),
       date(){
         if(this.label=='start'){ 
@@ -60,7 +65,7 @@ export default {
       updateEvent(e){
         this.menu2 = false;
         let  inputName = (this.label=='start'?'startDate':'endDate');
-        this.$store.dispatch('calendar/updateEventAttributes',{name:inputName,value:e});
+        this.$store.dispatch('calendar/updateEventAttributes',{name:inputName,value:e.trim()});
       }
       ,
       formatDate (date) {

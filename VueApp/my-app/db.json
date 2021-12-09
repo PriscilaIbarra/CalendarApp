@@ -71,20 +71,28 @@
       "id": 16
     },
     {
-      "name": "Test123",
-      "start": "2021-12-07T16:30:00.000Z",
-      "end": "2021-12-09T17:30:00.000Z",
-      "color": "pink accent-2",
+      "id": 19
+    },
+    {
+      "name": "Test",
+      "start": "2021-12-05T15:30:00.000Z",
+      "end": "2021-12-05T16:30:00.000Z",
+      "color": "orange",
+      "timed": true,
       "userId": 1,
-      "id": 17
+      "id": 20
+    },
+    {
+      "id": 21
     },
     {
       "name": "Example",
-      "start": "2021-12-06T16:30:00.000Z",
-      "end": "2021-12-07T17:30:00.000Z",
-      "color": "green",
+      "start": "2021-12-09T03:30:00.000Z",
+      "end": "2021-12-09T04:30:00.000Z",
+      "color": "teal lighten-2",
+      "timed": true,
       "userId": 1,
-      "id": 18
+      "id": 22
     }
   ],
   "logout": [

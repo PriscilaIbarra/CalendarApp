@@ -14,6 +14,7 @@
             label=""
             prepend-icon="mdi-clock-time-four-outline"
             readonly
+            :rules="(label=='start'?timeFromRules:timeToRules)"
             @input="updateEvent"
             v-bind="attrs"
             v-on="on"
@@ -44,7 +45,7 @@
     </v-dialog>    
 </template>
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapGetters} from 'vuex'
 
 export default{
     props:['label'],
@@ -55,6 +56,10 @@ export default{
         ...mapState({
             startTime: state=>state.calendar.event.startTime,
             endTime: state=>state.calendar.event.endTime
+        }),
+        ...mapGetters({
+            timeFromRules:'calendar/timeFromRules',
+            timeToRules:'calendar/timeToRules'
         }),
         time(){
             if(this.label=='start'){
@@ -68,7 +73,7 @@ export default{
     methods:{
         updateEvent(e){
             let selectedLabel = (this.label=='start'?'startTime':'endTime');
-            this.$store.dispatch('calendar/updateEventAttributes',{name:selectedLabel,value:e});
+            this.$store.dispatch('calendar/updateEventAttributes',{name:selectedLabel,value:e.trim()});
         }
     }
 }

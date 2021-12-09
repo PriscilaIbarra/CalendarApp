@@ -4,24 +4,17 @@
       <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
+      <v-spacer></v-spacer>
       <v-select
         v-model="type"
         :items="types"
         dense
         outlined
         hide-details
-        class="ma-2"
+        class="align-left"
         label="type"
       ></v-select>
-      <v-select
-        v-model="mode"
-        :items="modes"
-        dense
-        outlined
-        hide-details
-        label="event-overlap-mode"
-        class="ma-2"
-      ></v-select>
+      <v-spacer></v-spacer>
       <v-select
         v-model="weekday"
         :items="weekdays"
@@ -29,7 +22,7 @@
         outlined
         hide-details
         label="weekdays"
-        class="ma-2"
+        class="align-right"
       ></v-select>
       <v-spacer></v-spacer>
       <v-btn icon class="ma-2" @click="$refs.calendar.next()">

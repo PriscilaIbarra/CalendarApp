@@ -8,6 +8,7 @@ export default {
                 start:new Date(e.start),
                 end: new Date(e.end),
                 color: e.color,
+                timed:e.timed,
                 userId: e.userId
             })
         });               
@@ -55,6 +56,7 @@ export default {
             endDate: this.formatDate(event.end),
             endTime: this.formatTime(event.end),
             color: event.color,
+            timed:event.timed,
             id: event.id,
             userId: event.userId
           };

@@ -6,6 +6,7 @@
         >       
             <v-card
             rounded="t-xl"
+            class="rounded-b-xl"
             >
               <v-toolbar
               :color="!!color?color:'white'"
@@ -79,7 +80,8 @@ export default {
             showAddBtn:state=>state.calendar.showAddBtn,
             showEditBtn:state=>state.calendar.showEditBtn,
             showSaveBtn: state=>state.calendar.showSaveBtn,
-            showDelBtn: state =>state.calendar.showDelBtn
+            showDelBtn: state =>state.calendar.showDelBtn,
+            validForm: state=>state.calendar.validForm
         }),
     },
     methods:{
@@ -88,13 +90,15 @@ export default {
           this.$store.dispatch('calendar/closeEventModalForm');
         },
         add(){
-          this.$store.dispatch('calendar/addEvent');
+          this.$store.dispatch('calendar/checkForm',true);
+          if(this.validForm)this.$store.dispatch('calendar/addEvent');
         },
         edit(){
           this.$store.dispatch('calendar/enableForm');
         },
-        update(){
-          this.$store.dispatch('calendar/updateEvent');
+        update(){ 
+          this.$store.dispatch('calendar/checkForm',true);
+          if(this.validForm)this.$store.dispatch('calendar/updateEvent');
         },
         deleteEvent(){
           this.$store.dispatch('calendar/showDeleteDialog');

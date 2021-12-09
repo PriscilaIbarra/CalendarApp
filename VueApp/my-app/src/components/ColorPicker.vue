@@ -40,7 +40,7 @@ export default{
     methods:{
       selectColor(toggle,c){
         if(this.disableSelection)return
-        this.$store.dispatch('calendar/updateEventAttributes',{name:'color',value:c});
+        this.$store.dispatch('calendar/updateEventAttributes',{name:'color',value:c.trim()});
         toggle();
       }
     }

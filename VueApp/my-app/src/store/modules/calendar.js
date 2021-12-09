@@ -31,10 +31,47 @@ const state = ()=>({
       "pink accent-2",
       "red lighten-1"
     ],
+    check:false,
+    validForm:false,
 })
 
+const required = (value,name,errors)=>{
+       if(value) return errors
+       !value && errors.push(name+' is required')
+       return errors
+}
+
 const getters = {
-  
+    nameRules:state=>{
+       const errors = [];
+       required(state.event.name,'Name',errors);
+       return errors
+    },
+    dateFromRules:state=>{
+        const errors = []
+        required(state.event.startDate,'Date',errors)
+        return errors
+    },
+    dateToRules:state=>{
+        const errors = []
+        required(state.event.endDate,'Date',errors)
+        return errors
+    },
+    timeFromRules:state=>{
+        const errors = []
+        required(state.event.startTime,'Time',errors)
+        return errors
+    },
+    timeToRules:state=>{
+        const errors = []
+        required(state.event.endTime,'Time',errors)
+        return errors
+    },
+    colorRules:state=>{
+        const errors = []
+        required(state.event.color,'Color',errors)
+        return errors
+    },
 }
 
 const actions = { 
@@ -52,6 +89,8 @@ const actions = {
         commit('HIDE_EDIT_EVENT_BTN');
         commit('HIDE_SAVE_EVENT_BTN');
         commit('HIDE_DELETE_EVENT_BTN');
+        commit('CHECK_FORM',false);
+        commit('VALIDATE_FORM',false);
         commit('SET_USERID_EVENT',store.state.user.user.id);
         commit('SHOW_EVENT_MODAL_FORM');
     }
@@ -65,6 +104,8 @@ const actions = {
           commit('SHOW_EDIT_EVENT_BTN');
           commit('SHOW_DELETE_EVENT_BTN');
           commit('HIDE_SAVE_EVENT_BTN');
+          commit('CHECK_FORM',false);
+          commit('VALIDATE_FORM',false);
           commit('SET_EVENT',normalizer.formatEvent(event));
           commit('SHOW_EVENT_MODAL_FORM');
         }
@@ -79,6 +120,13 @@ const actions = {
         commit('SHOW_SAVE_EVENT_BTN');
     }
     ,
+    checkForm({commit},value){
+        commit('CHECK_FORM',value);
+    }
+    ,
+    validateForm({commit},value){
+        commit('VALIDATE_FORM',value);
+    },
     closeEventModalForm({commit}){
         commit('CLOSE_EVENT_MODAL_FORM');
     }
@@ -211,7 +259,13 @@ const mutations = {
     CLOSE_DELETE_DIALOG(state){
         state.showDeleteDialog = false
     }
-
+    ,
+    CHECK_FORM(state,value){
+        state.check = value;
+    },
+    VALIDATE_FORM(state,value){
+        state.validForm = value
+    }
 }
 
 export default {
@@ -219,5 +273,6 @@ export default {
     state,
     getters,
     actions,
-    mutations
+    mutations,
+    required,
 }

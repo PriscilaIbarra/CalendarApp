@@ -30,7 +30,7 @@ const actions = {
           commit('CLEAN_USER_STATE'); 
           commit('SET_USER',data.user);
           commit('LOGIN',{status:'success',token:data.accessToken})      
-          router.push({path: "/dashboard"})
+          router.push({path: "/dashboard/calendar"})
        }
        else
        {
