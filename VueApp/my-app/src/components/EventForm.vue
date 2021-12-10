@@ -13,7 +13,7 @@
               name="name"
               :value="name"
               @input="updateEventAttributes"
-              :rules="nameRules"
+              :rules="nameRules.result"
               ></v-text-field>  
              </v-col>
          </v-row>
@@ -42,7 +42,6 @@ export default {
         }),
         ...mapGetters({
           nameRules:'calendar/nameRules',
-          nameOk:'calendar/nameOk'
         })
      },
      methods:{

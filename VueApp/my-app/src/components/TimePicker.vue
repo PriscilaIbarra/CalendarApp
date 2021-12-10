@@ -14,7 +14,7 @@
             label=""
             prepend-icon="mdi-clock-time-four-outline"
             readonly
-            :rules="(label=='start'?timeFromRules:timeToRules)"
+            :rules="(label=='start'?timeFromRules.result:timeToRules.result)"
             @input="updateEvent"
             v-bind="attrs"
             v-on="on"

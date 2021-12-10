@@ -31,8 +31,10 @@ const state = ()=>({
       "pink accent-2",
       "red lighten-1"
     ],
-    check:false,
-    validForm:false,
+    errors:{
+        name:[],
+        
+    }
 })
 
 const required = (value,name,errors)=>{
@@ -43,48 +45,57 @@ const required = (value,name,errors)=>{
 
 const smallerThan = (val1,val2,msg,errors)=>{
       if(val1<=val2) return errors
-      !val1<=val2 && errors.push(msg)
+      errors.push(msg)
       return errors
 }
 
 const graterThan = (val1,val2,msg,errors)=>{
       if(val1>=val2) return errors
-      !val1>=val2 && errors.push(msg)
+      errors.push(msg)
       return errors
+}
+
+const checkInput = (errors)=>{
+    if(errors.length==0){
+        return true
+    }
+    else{
+        return false
+    }
 }
 
 const getters = {
     nameRules:state=>{
        const errors = [];
        required(state.event.name,'Name',errors);
-       return errors
+       return {status:checkInput(errors),result:errors}
     },
     dateFromRules:state=>{
         const errors = []
         required(state.event.startDate,'Date',errors)
         smallerThan(state.event.startDate,state.event.endDate,'Invalida date range',errors)
-        return errors
+        return {status:checkInput(errors),result:errors}
     },
     dateToRules:state=>{
         const errors = []
         required(state.event.endDate,'Date',errors)
         graterThan(state.event.endDate,state.event.startDate,'Invalid date range',errors)
-        return errors
+        return {status:checkInput(errors),result:errors}
     },
     timeFromRules:state=>{
         const errors = []
         required(state.event.startTime,'Time',errors)
-        return errors
+        return {status:checkInput(errors),result:errors}
     },
     timeToRules:state=>{
         const errors = []
         required(state.event.endTime,'Time',errors)
-        return errors
+        return {status:checkInput(errors),result:errors}
     },
     colorRules:state=>{
         const errors = []
         required(state.event.color,'Color',errors)
-        return errors
+        return {status:checkInput(errors),result:errors}
     },
 }
 
@@ -103,8 +114,6 @@ const actions = {
         commit('HIDE_EDIT_EVENT_BTN');
         commit('HIDE_SAVE_EVENT_BTN');
         commit('HIDE_DELETE_EVENT_BTN');
-        commit('CHECK_FORM',false);
-        commit('VALIDATE_FORM',false);
         commit('SET_USERID_EVENT',store.state.user.user.id);
         commit('SET_DATE_EVENT',date);
         commit('SHOW_EVENT_MODAL_FORM');
@@ -119,8 +128,6 @@ const actions = {
           commit('SHOW_EDIT_EVENT_BTN');
           commit('SHOW_DELETE_EVENT_BTN');
           commit('HIDE_SAVE_EVENT_BTN');
-          commit('CHECK_FORM',false);
-          commit('VALIDATE_FORM',false);
           commit('SET_EVENT',normalizer.formatEvent(event));
           commit('SHOW_EVENT_MODAL_FORM');
         }
@@ -135,9 +142,6 @@ const actions = {
         commit('SHOW_SAVE_EVENT_BTN');
     }
     ,
-    validateForm({commit},value){
-        commit('VALIDATE_FORM',value);
-    },
     closeEventModalForm({commit}){
         commit('CLOSE_EVENT_MODAL_FORM');
     }
@@ -271,9 +275,6 @@ const mutations = {
         state.showDeleteDialog = false
     }
     ,
-    VALIDATE_FORM(state,value){
-        state.validForm = value
-    },
     SET_DATE_EVENT(state,date){
         state.event.startDate = date;
         state.event.endDate = date;

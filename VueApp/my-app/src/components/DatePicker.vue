@@ -14,7 +14,7 @@
               readonly
               hint="MM/DD/YYYY"
               persistent-hint
-              :rules="(label=='start'?dateFromRules:dateToRules)"
+              :rules="(label=='start'?dateFromRules.result:dateToRules.result)"
               prepend-icon="mdi-calendar"
               v-bind="attrs"
               v-on="on"

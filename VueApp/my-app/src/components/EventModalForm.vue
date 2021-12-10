@@ -61,13 +61,13 @@
                         mdi-delete
                       </v-icon>
               </v-card-actions>
-            </v-card>        
+            </v-card> 
         </v-dialog>
 </template>
 <script>
 import EventForm from './EventForm.vue'
 import DeleteEventDialog from './DeleteEventDialog.vue'
-import {mapState} from 'vuex'
+import {mapState,mapGetters} from 'vuex'
 export default {
     components:{
       EventForm,
@@ -81,16 +81,32 @@ export default {
             showEditBtn:state=>state.calendar.showEditBtn,
             showSaveBtn: state=>state.calendar.showSaveBtn,
             showDelBtn: state =>state.calendar.showDelBtn,
-            validForm: state=>state.calendar.validForm
         }),
+        ...mapGetters({
+           nameRules:'calendar/nameRules',
+           dateFromRules:'calendar/dateFromRules',
+           dateToRules:'calendar/dateToRules',
+           timeFromRules:'calendar/timeFromRules',
+           timeToRules:'calendar/timeToRules',
+           colorRules:'calendar/colorRules'
+        }),
+        formStatus(){
+          return this.nameRules.status &&
+                 this.dateFromRules.status &&
+                 this.dateToRules.status &&
+                 this.timeFromRules.status &&
+                 this.timeToRules.status &&
+                 this.colorRules.status
+        }
     },
     methods:{
         close(){
           this.$store.dispatch('calendar/cleanEventModalForm');
           this.$store.dispatch('calendar/closeEventModalForm');
         },
-        add(){
-          this.$store.dispatch('calendar/addEvent');
+        add(){ 
+          if(this.formStatus) this.$store.dispatch('calendar/addEvent');
+          if(!this.formStatus) this.$store.dispatch('notifications/notifyEventFormErrors')
         },
         edit(){
           this.$store.dispatch('calendar/enableForm');
