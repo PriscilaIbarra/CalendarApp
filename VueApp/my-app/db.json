@@ -86,12 +86,6 @@
       "id": 21
     },
     {
-      "name": "Example",
-      "start": "2021-12-09T03:30:00.000Z",
-      "end": "2021-12-09T04:30:00.000Z",
-      "color": "teal lighten-2",
-      "timed": true,
-      "userId": 1,
       "id": 22
     }
   ],

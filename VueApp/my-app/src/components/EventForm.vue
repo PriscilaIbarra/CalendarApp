@@ -39,28 +39,16 @@ export default {
        ...mapState({
           name : state =>state.calendar.event.name,
           edit : state =>state.calendar.showEditBtn,
-          check: state =>state.calendar.check
         }),
         ...mapGetters({
-          nameRules:'calendar/nameRules'
-        }),
-        validate(){ alert(this.$refs.eventForm.validate())
-          if(this.check){ 
-            this.$store.dispatch('calendar/validateForm',this.$refs.eventForm.validate())
-            return true
-          }
-          else{
-            return false
-          }
-        }
+          nameRules:'calendar/nameRules',
+          nameOk:'calendar/nameOk'
+        })
      },
      methods:{
        updateEventAttributes(e){ 
          this.$store.dispatch('calendar/updateEventAttributes',{name:'name',value: e.trim()});
        }
-     },
-     mounted(){
-       this.validate();
      }
 }
 </script>

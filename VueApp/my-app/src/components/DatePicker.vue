@@ -11,6 +11,7 @@
             <v-text-field
               v-model="computedDateFormatted"
               label=""
+              readonly
               hint="MM/DD/YYYY"
               persistent-hint
               :rules="(label=='start'?dateFromRules:dateToRules)"

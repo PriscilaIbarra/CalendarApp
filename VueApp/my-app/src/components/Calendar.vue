@@ -79,8 +79,8 @@ export default {
     showEvent({event}){ 
       this.$store.dispatch('calendar/showModalFormForEditEvent',event);
     },
-    showEventForm(){
-      this.$store.dispatch('calendar/showModalFormForAddEvent');
+    showEventForm({date}){
+      this.$store.dispatch('calendar/showModalFormForAddEvent',date);
     },
     getEvents() {
       return this.events;

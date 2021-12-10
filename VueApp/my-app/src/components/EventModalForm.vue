@@ -90,15 +90,13 @@ export default {
           this.$store.dispatch('calendar/closeEventModalForm');
         },
         add(){
-          this.$store.dispatch('calendar/checkForm',true);
-          if(this.validForm)this.$store.dispatch('calendar/addEvent');
+          this.$store.dispatch('calendar/addEvent');
         },
         edit(){
           this.$store.dispatch('calendar/enableForm');
         },
-        update(){ 
-          this.$store.dispatch('calendar/checkForm',true);
-          if(this.validForm)this.$store.dispatch('calendar/updateEvent');
+        update(){         
+          this.$store.dispatch('calendar/updateEvent');
         },
         deleteEvent(){
           this.$store.dispatch('calendar/showDeleteDialog');

@@ -13,21 +13,21 @@ const state = ()=>({
     event:{
         name:'',
         startDate:'',
-        startTime:'',
+        startTime:'00:00',
         endDate:'',
-        endTime:'',
-        color:'',
+        endTime:'00:00',
+        color:'orange',
         timed:true,
         userId:'',
         id:''
     },
     colors:[
+      "orange",  
       "blue",
       "teal lighten-2",
       "yellow",
       "cyan",
       "green",
-      "orange",
       "pink accent-2",
       "red lighten-1"
     ],
@@ -41,6 +41,18 @@ const required = (value,name,errors)=>{
        return errors
 }
 
+const smallerThan = (val1,val2,msg,errors)=>{
+      if(val1<=val2) return errors
+      !val1<=val2 && errors.push(msg)
+      return errors
+}
+
+const graterThan = (val1,val2,msg,errors)=>{
+      if(val1>=val2) return errors
+      !val1>=val2 && errors.push(msg)
+      return errors
+}
+
 const getters = {
     nameRules:state=>{
        const errors = [];
@@ -50,11 +62,13 @@ const getters = {
     dateFromRules:state=>{
         const errors = []
         required(state.event.startDate,'Date',errors)
+        smallerThan(state.event.startDate,state.event.endDate,'Invalida date range',errors)
         return errors
     },
     dateToRules:state=>{
         const errors = []
         required(state.event.endDate,'Date',errors)
+        graterThan(state.event.endDate,state.event.startDate,'Invalid date range',errors)
         return errors
     },
     timeFromRules:state=>{
@@ -82,7 +96,7 @@ const actions = {
         if(!error) commit('SET_EVENTS',eventsList);  
     }
     ,
-    showModalFormForAddEvent({commit})
+    showModalFormForAddEvent({commit},date)
     {
         commit('CLEAN_EVENT_MODAL_FORM');
         commit('SHOW_ADD_EVENT_BTN');
@@ -92,6 +106,7 @@ const actions = {
         commit('CHECK_FORM',false);
         commit('VALIDATE_FORM',false);
         commit('SET_USERID_EVENT',store.state.user.user.id);
+        commit('SET_DATE_EVENT',date);
         commit('SHOW_EVENT_MODAL_FORM');
     }
     ,
@@ -118,10 +133,6 @@ const actions = {
     enableForm({commit}){ 
         commit('HIDE_EDIT_EVENT_BTN');
         commit('SHOW_SAVE_EVENT_BTN');
-    }
-    ,
-    checkForm({commit},value){
-        commit('CHECK_FORM',value);
     }
     ,
     validateForm({commit},value){
@@ -215,10 +226,10 @@ const mutations = {
        state.event = {
         name:'',
         startDate:'',
-        startTime:'',
+        startTime:'00:00',
         endDate:'',
-        endTime:'',
-        color:'',
+        endTime:'00:00',
+        color:'orange',
         timed:true,
         userId:'',
         id:''
@@ -260,11 +271,12 @@ const mutations = {
         state.showDeleteDialog = false
     }
     ,
-    CHECK_FORM(state,value){
-        state.check = value;
-    },
     VALIDATE_FORM(state,value){
         state.validForm = value
+    },
+    SET_DATE_EVENT(state,date){
+        state.event.startDate = date;
+        state.event.endDate = date;
     }
 }
 
