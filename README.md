@@ -49,7 +49,17 @@ server.listen(3000, () => console.log('Server is listening on PORT 3000'))
 ### adding vuelidate for form validation 
 ### npm install vuelidate --save
  
-### yarn add vee-validate
-
 ### add animations 
 ### yarn add animate.css
+
+### Add testing library
+### yarn add --dev jest
+
+### Test App
+### https://vue-test-utils.vuejs.org/installation/#using-vue-test-utils-with-jest-recommended
+
+### vue add unit-jest
+### npm install --save-dev @vue/test-utils
+### in package.json add scripts:{"test":"jest"}
+### Run test
+### sudo yarn test

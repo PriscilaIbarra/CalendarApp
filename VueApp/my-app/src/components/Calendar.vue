@@ -44,7 +44,7 @@
         @change="getEvents"
       ></v-calendar>
     </v-sheet>    
-    <EventModalForm/>
+    <event-modal-form/>
   </div>
 </template>
 <script>

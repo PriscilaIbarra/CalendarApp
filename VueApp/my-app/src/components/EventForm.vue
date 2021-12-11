@@ -2,8 +2,6 @@
      <v-container fluid>
         <v-form 
         :disabled="edit"
-        ref="eventForm"
-        :value="valid"
         >
          <v-row>
              <v-col         
@@ -17,11 +15,21 @@
               ></v-text-field>  
              </v-col>
          </v-row>
-         <sup>From</sup>
-         <DateTimePicker :label="'start'" class="mt-n6"/>
-         <sup>To</sup>
-         <DateTimePicker :label="'end'" class="mt-n6"/> 
-         <ColorPicker/>
+         <sup>
+           From
+         </sup>
+            <date-time-picker 
+            :label="'start'"
+             class="mt-n6"
+            />
+         <sup>
+           To
+         </sup>
+            <date-time-picker 
+            :label="'end'" 
+            class="mt-n6"
+            /> 
+            <color-picker/>
          </v-form>
      </v-container>    
 </template>

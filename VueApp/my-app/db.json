@@ -74,19 +74,19 @@
       "id": 19
     },
     {
-      "name": "Test",
-      "start": "2021-12-05T15:30:00.000Z",
-      "end": "2021-12-05T16:30:00.000Z",
-      "color": "orange",
-      "timed": true,
-      "userId": 1,
-      "id": 20
-    },
-    {
       "id": 21
     },
     {
       "id": 22
+    },
+    {
+      "name": "Test App",
+      "start": "2021-12-11T13:00:00.000Z",
+      "end": "2021-12-11T14:00:00.000Z",
+      "color": "teal lighten-2",
+      "timed": true,
+      "userId": 1,
+      "id": 23
     }
   ],
   "logout": [

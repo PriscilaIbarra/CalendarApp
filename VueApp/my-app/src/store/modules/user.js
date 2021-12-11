@@ -53,7 +53,7 @@ const actions = {
 
 }
 
-const mutations = {
+export const mutations = {
     UPDATE_USER(state,input){
         state.user[input.name] = input.value      
     },

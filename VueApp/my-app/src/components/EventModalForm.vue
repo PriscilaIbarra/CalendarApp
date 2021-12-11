@@ -48,6 +48,7 @@
               <v-card-text>
                  <event-form/>
                  <delete-event-dialog/>
+                 <event-errors-dialog/>
               </v-card-text>
               <v-card-actions 
               class="mt-n4"
@@ -67,11 +68,14 @@
 <script>
 import EventForm from './EventForm.vue'
 import DeleteEventDialog from './DeleteEventDialog.vue'
-import {mapState,mapGetters} from 'vuex'
+import EventErrorsDialog from'./EventErrorsDialog.vue'
+import {mapState, mapGetters} from 'vuex'
+
 export default {
     components:{
       EventForm,
-      DeleteEventDialog
+      DeleteEventDialog,
+      EventErrorsDialog
     },
     computed:{
         ...mapState({
@@ -106,13 +110,14 @@ export default {
         },
         add(){ 
           if(this.formStatus) this.$store.dispatch('calendar/addEvent');
-          if(!this.formStatus) this.$store.dispatch('notifications/notifyEventFormErrors')
+          if(!this.formStatus) this.$store.dispatch('calendar/showErrorsDialog');
         },
         edit(){
           this.$store.dispatch('calendar/enableForm');
         },
         update(){         
-          this.$store.dispatch('calendar/updateEvent');
+          if(this.formStatus) this.$store.dispatch('calendar/updateEvent');
+          if(!this.formStatus) this.$store.dispatch('calendar/showErrorsDialog');
         },
         deleteEvent(){
           this.$store.dispatch('calendar/showDeleteDialog');

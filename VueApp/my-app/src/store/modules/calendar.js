@@ -1,6 +1,7 @@
 import api from '../../api/api'
 import normalizer from '../../api/normalizer';
 import store from '../../store';
+import {required, smallerThan, graterThan, checkInput} from '../../validations/validators';
 
 const state = ()=>({   
     events: [],  
@@ -10,6 +11,7 @@ const state = ()=>({
     showEditBtn:false,
     showSaveBtn:false,
     showDeleteDialog:false,
+    showEventErrorsDialog:false,
     event:{
         name:'',
         startDate:'',
@@ -30,39 +32,10 @@ const state = ()=>({
       "green",
       "pink accent-2",
       "red lighten-1"
-    ],
-    errors:{
-        name:[],
-        
-    }
+    ]
 })
 
-const required = (value,name,errors)=>{
-       if(value) return errors
-       !value && errors.push(name+' is required')
-       return errors
-}
 
-const smallerThan = (val1,val2,msg,errors)=>{
-      if(val1<=val2) return errors
-      errors.push(msg)
-      return errors
-}
-
-const graterThan = (val1,val2,msg,errors)=>{
-      if(val1>=val2) return errors
-      errors.push(msg)
-      return errors
-}
-
-const checkInput = (errors)=>{
-    if(errors.length==0){
-        return true
-    }
-    else{
-        return false
-    }
-}
 
 const getters = {
     nameRules:state=>{
@@ -73,7 +46,7 @@ const getters = {
     dateFromRules:state=>{
         const errors = []
         required(state.event.startDate,'Date',errors)
-        smallerThan(state.event.startDate,state.event.endDate,'Invalida date range',errors)
+        smallerThan(state.event.startDate,state.event.endDate,'Invalid date range',errors)
         return {status:checkInput(errors),result:errors}
     },
     dateToRules:state=>{
@@ -114,6 +87,7 @@ const actions = {
         commit('HIDE_EDIT_EVENT_BTN');
         commit('HIDE_SAVE_EVENT_BTN');
         commit('HIDE_DELETE_EVENT_BTN');
+        commit('CLOSE_EVENT_ERRORS_DIALOG')
         commit('SET_USERID_EVENT',store.state.user.user.id);
         commit('SET_DATE_EVENT',date);
         commit('SHOW_EVENT_MODAL_FORM');
@@ -128,6 +102,7 @@ const actions = {
           commit('SHOW_EDIT_EVENT_BTN');
           commit('SHOW_DELETE_EVENT_BTN');
           commit('HIDE_SAVE_EVENT_BTN');
+          commit('CLOSE_EVENT_ERRORS_DIALOG')
           commit('SET_EVENT',normalizer.formatEvent(event));
           commit('SHOW_EVENT_MODAL_FORM');
         }
@@ -152,10 +127,18 @@ const actions = {
     ,
     showDeleteDialog({commit}){ 
         commit('SHOW_DELETE_DIALOG');
-    }
+    }  
     ,
     closeDeleteDialog({commit}){
         commit('CLOSE_DELETE_DIALOG');
+    }
+    ,
+    showErrorsDialog({commit}){
+        commit('SHOW_EVENT_ERRORS_DIALOG')
+    }
+    ,
+    closeErrorsDialog({commit}){
+        commit('CLOSE_EVENT_ERRORS_DIALOG')
     }
     ,
     updateEventAttributes({commit},input){ 
@@ -275,6 +258,14 @@ const mutations = {
         state.showDeleteDialog = false
     }
     ,
+    SHOW_EVENT_ERRORS_DIALOG(state){
+        state.showEventErrorsDialog = true
+    }
+    ,
+    CLOSE_EVENT_ERRORS_DIALOG(state){
+        state.showEventErrorsDialog = false
+    }
+    ,
     SET_DATE_EVENT(state,date){
         state.event.startDate = date;
         state.event.endDate = date;
@@ -286,6 +277,5 @@ export default {
     state,
     getters,
     actions,
-    mutations,
-    required,
+    mutations
 }

@@ -4,7 +4,7 @@ import user from './modules/user'
 import notifications from './modules/notifications'
 import dashboard from './modules/dashboard'
 import calendar from './modules/calendar'
-import VuexPersistence from 'vuex-persist'; //library to persist state object inside localStorage
+import VuexPersistence from 'vuex-persist'; 
 
 Vue.use(Vuex)
 

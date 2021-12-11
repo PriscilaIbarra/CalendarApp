@@ -1,10 +1,14 @@
 <template>
     <v-row class="mt-n4">
              <v-col>
-               <DatePicker :label="label"/>
+               <date-picker 
+               :label="label"
+               />
              </v-col>
              <v-col>
-               <TimePicker :label="label"/>  
+               <time-picker 
+               :label="label"
+               />  
              </v-col>
     </v-row>
 </template>
