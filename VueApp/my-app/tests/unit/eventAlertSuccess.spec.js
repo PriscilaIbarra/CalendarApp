@@ -40,8 +40,7 @@ describe("EventAlertSuccess.vue",()=>{
 })
 */
 describe("EventAlertSuccess.vue",()=>{
-        const vuetify = new Vuetify();
-    
+    const vuetify = new Vuetify();    
     it("Test Component mounts properly", async ()=>{
         const wrapper = mount(EventAlertSuccess,{
                    localVue,
@@ -52,8 +51,20 @@ describe("EventAlertSuccess.vue",()=>{
                        }
                    }
         });
-        let alert = wrapper.get('[data-test-id="msg"]')
+        let alert = wrapper.get('[data-test="msg"]')
         expect(alert.text()).toBe('The event has been registered successfuly')
+    });
+    it("Component do not render if msg is empty", async ()=>{
+        const wrapper = mount(EventAlertSuccess,{
+                   localVue,
+                   vuetify,
+                   computed:{
+                       msg(){
+                          return ''
+                       }
+                   }
+        });
+        expect(wrapper.html()).toBe('')
     });
    
 })

@@ -6,7 +6,7 @@
     dismissible
     type="success"
     v-if="msg"
-    data-test-id="msg"
+    data-test="msg"
   >
     {{ msg }}
     <template v-slot:close="{ toggle }">
