@@ -6,6 +6,7 @@
     dismissible
     type="success"
     v-if="msg"
+    data-test-id="msg"
   >
     {{ msg }}
     <template v-slot:close="{ toggle }">
@@ -19,6 +20,7 @@
 </template>
 <script>
 export default {
+  name:'event-alert-success',
   computed: {
     msg() {
       return this.$store.state.notifications.eventSuccess;

@@ -63,3 +63,6 @@ server.listen(3000, () => console.log('Server is listening on PORT 3000'))
 ### in package.json add scripts:{"test":"jest"}
 ### Run test
 ### sudo yarn test
+
+### testing vuetify components
+### https://vuetifyjs.com/en/getting-started/unit-testing/#testing-efficiency
