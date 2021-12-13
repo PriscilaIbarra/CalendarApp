@@ -8,7 +8,6 @@ const state = ()=>({
     user:{
         id:'',
         email:'',
-        password:'',       
     }
 })
 
@@ -22,9 +21,9 @@ const actions = {
         commit('UPDATE_USER',input);        
     }
     ,
-    async login({commit,state, dispatch})
+    async login({commit,dispatch},user)
     { 
-       const [data,error] = await api.authenticateUser(state.user);
+       const [data,error] = await api.authenticateUser(user);
        if(!error)
        {
           commit('CLEAN_USER_STATE'); 
@@ -58,15 +57,15 @@ export const mutations = {
         state.user[input.name] = input.value      
     },
     CLEAN_USER_STATE(state){
+        state.user.id = ''
         state.user.email = ''
-        state.user.password = ''       
         state.isAuthenticated = false
         state.status = ''
         state.token = ''
     },    
     SET_USER(state,payload){
+        state.user.id = payload.id 
         state.user.email = payload.email  
-        state.user.id = payload.id      
     },
     LOGIN(state,payload){
         state.isAuthenticated = true

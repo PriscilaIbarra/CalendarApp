@@ -19,21 +19,25 @@
         v-model="valid"
         >
                 <v-text-field
-                v-model="email"
+                v-model="user.email"
                 filled
                 prepend-inner-icon="mdi-email"               
                 label="E-mail"
-                :type="'email'"                
-                :rules="emailRules"
+                :type="'email'"
+                :error-messages="emailErrors"
+                @input="$v.user.email.$touch()"
+                @blur="$v.user.email.$touch()"
                  ></v-text-field>                
                 <v-text-field
-                v-model="password"
+                v-model="user.password"
                 filled
                 prepend-inner-icon="mdi-lock"               
                 label="Password"
                 :type="'password'"
-                autocomplete="true"               
-                :rules="passwordRules" 
+                autocomplete="true"   
+                :error-messages="passwordErrors"
+                @input="$v.user.password.$touch()"
+                @blur="$v.user.password.$touch()"
                 v-on:keyup.enter="login"
                 ></v-text-field>               
                 <v-btn
@@ -47,40 +51,46 @@
         </v-container>
     </v-card>
 </template>
+
 <script>
-export default {   
+import { validationMixin } from 'vuelidate' 
+import { required, email} from 'vuelidate/lib/validators'
+
+export default {  
+    mixins: [validationMixin], 
     data:()=>({  
-      valid:true,   
-      emailRules:[
-        v=>!!v||'Email is required',
-        v=> /.+@.+\..+/.test(v) ||'Invalid format'
-      ],
-      passwordRules:[
-        v=>!!v||'Password is required'
-      ]
+        user:{
+          email:'',
+          password:'',
+        }
     }),
+    validations:{
+        email:{
+          required,
+          email
+        },
+        password:{
+          required
+        }
+    },
     computed:{    
-      email:{
-        get(){
-         return this.$store.state.user.email
-        },
-        set(val){
-          this.$store.dispatch('user/updateUser',{name:'email',value:val.trim()});
-        }
+      emailErrors(){
+        const errors = []
+        if(!this.$v.user.email.$dirty) return errors
+        !this.$v.user.email.required && errors.push('Email is required')
+        !this.$v.user.email.email && errors.push('Invalid format')
+        return errors
+      },
+      passwordErrors(){
+        const errors = []
+        if(!this.$v.user.password.$dirty) return errors
+        !this.$v.user.password.required && errors.push('Password is required')
+        return errors
       }
-      ,
-     password:{
-        get(){ 
-          return this.$store.state.user.password
-        },
-        set(val){
-          this.$store.dispatch('user/updateUser',{name:'password',value:val.trim()});
-        }
-     }     
     },    
     methods:{
       login(){
-        if(this.$refs.form.validate())this.$store.dispatch('user/login'); 
+        if(!this.$v.user.$invalid)this.$store.dispatch('user/login',this.user); 
       }
     }
 }
