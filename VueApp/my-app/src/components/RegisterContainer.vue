@@ -1,5 +1,6 @@
 <template>
      <v-app>
+        <app-menu/> 
         <v-container>
             <v-row justify="center">
                 <v-col
@@ -16,8 +17,12 @@
         </v-container>    
      </v-app>    
 </template>
+
 <script>
+import Menu from '../components/Menu.vue'
 export default {
-    
+    components:{
+       'app-menu': Menu
+    }
 }
 </script>

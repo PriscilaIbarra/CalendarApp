@@ -14,18 +14,18 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    children:[
-      {
-        path:'/sign-in',
-        name:'SignIn',
-        component: LoginView
-      },
-      {
-        path:'/sign-up',
-        name:'SignUp',
-        component: RegisterView
-      }
-    ]
+  }
+  ,
+  {
+    path:'/sign-in',
+    name:'SignIn',
+    component: LoginView
+  }
+  ,
+  {
+    path:'/sign-up',
+    name:'SignUp',
+    component: RegisterView
   }
   ,
   {

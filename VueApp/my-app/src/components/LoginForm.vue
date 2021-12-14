@@ -65,13 +65,15 @@ export default {
         }
     }),
     validations:{
-        email:{
-          required,
-          email
-        },
-        password:{
-          required
-        }
+        user:{
+          email:{
+              required,
+              email
+          },
+          password:{
+             required
+          }
+        }  
     },
     computed:{    
       emailErrors(){
