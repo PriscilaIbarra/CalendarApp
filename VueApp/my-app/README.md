@@ -1,27 +1,29 @@
 # my-app
 
-## Project setup
+## Install dependencies.
 ```
 yarn install
 ```
-### Compiles web development server and fake api
+### Compiles web development server. 
 ```
 yarn start
 ```
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development.
 ```
 yarn serve
 ```
+### Run web development server and  endpoints of fake json-server api.
+```
+yarn dev
+```
 
-### Compiles and minifies for production
+### Compiles and minifies for production.
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### Lints and fixes files.
 ```
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
