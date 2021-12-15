@@ -1,4 +1,5 @@
 ## CalendarApp
+![alt text](https://github.com/PriscilaIbarra/CalendarApp/blob/master/VueApp/snapshots/1.png)
 
 ```
 Is a free web calendar that helps users to schedule new events like birthday, meetings and holidays easyly.
@@ -7,6 +8,9 @@ Additionally the web calendar brings different views to filter events by month, 
 user needs at a glance.
 The following web app was developed using vue, vuetify component library and vuex state managment system.
 ```
+![alt text](https://github.com/PriscilaIbarra/CalendarApp/blob/master/VueApp/snapshots/2.png)
+
+![alt text](https://github.com/PriscilaIbarra/CalendarApp/blob/master/VueApp/snapshots/3.png)
 
 ### Try :
 ```
