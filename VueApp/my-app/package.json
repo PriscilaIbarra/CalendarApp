@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "json-server": "npx json-server --watch db.json -m ./node_modules/json-server-auth",
-    "start": "yarn serve & yarn json-server",
+    "start": "yarn serve",
+    "dev":"yarn serve & yarn json-server",
     "test":"jest"
   },
   "dependencies": {
