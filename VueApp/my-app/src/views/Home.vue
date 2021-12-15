@@ -2,9 +2,7 @@
   <v-app
   >
     <app-menu/>
-    <v-container
-    class="mt-6"
-    > 
+    <v-container  class="mt-n6"> 
         <app-section
          v-for="section in sections"
          :key="section.id"
@@ -31,24 +29,24 @@ export default {
     sections:[
       {
         id:0,
-        title:'Calendar Lorem Ipsum is simply dummy ',
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        title:'Schedule your events for free!  ',
+        description:"CalendarApp is a web platform specially designed to keep track of event dates. With this app you can easily keep an eye on important events like festivals, birthdays, holidays and so on.",
         imgPath:'../images/undraw_online_calendar_re_wk3t.svg',
         reverse:false
       }
       ,
       {
         id:1,
-        title:'Calendar Lorem Ipsum is simply dummy ',
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        title:'Calendar features.',
+        description:"You can add, update or delete multiple events on your schedule and customize dates, times and colors of each one.",
         imgPath:'../images/undraw_online_organizer_ofxm.svg',
         reverse:true
       }
       ,
       {
         id:2,
-        title:'Calendar Lorem Ipsum is simply dummy ',
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        title:'Smart event filter.',
+        description:"CalendarApp brings you diferrent views to filter events by day, week or month and help you find what you need at a glance.",
         imgPath:'../images/undraw_calendar_re_ki49.svg',
         reverse:false
       }
