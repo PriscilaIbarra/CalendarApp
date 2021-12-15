@@ -13,17 +13,19 @@
          :reverse="section.reverse"
         />
     </v-container>   
+    <app-footer/>
   </v-app> 
 </template>
 <script>
 import Menu from '../components/Menu.vue'
 import Section from '../components/Section.vue'
-
+import Footer from '../components/Footer.vue'
 export default {
   name:'home',
   components:{
     'app-menu': Menu,
-    'app-section': Section
+    'app-section': Section,
+    'app-footer': Footer
   },
   data:()=>({
     sections:[

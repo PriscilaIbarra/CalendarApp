@@ -44,7 +44,7 @@ export default {
     },
     formatTime(dateTime){
         //HH:mm
-        var hours = dateTime.getHours()
+        var hours = (dateTime.getHours().toString().length==1 ? ('0'+dateTime.getHours()) :dateTime.getHours());
         var minutes = ( dateTime.getMinutes() == 0 ? '00' : dateTime.getMinutes() );
         return `${hours}:${minutes}`
     },

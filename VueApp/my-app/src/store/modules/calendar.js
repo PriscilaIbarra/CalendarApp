@@ -161,7 +161,7 @@ const actions = {
     }
     ,
     async updateEvent({dispatch,state})
-    { 
+    {                      
       const [error] = await api.updateEvent(state.event); 
       if(error)
       {

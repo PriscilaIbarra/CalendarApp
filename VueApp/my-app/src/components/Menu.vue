@@ -6,7 +6,7 @@
         href="/"
         >
           <v-icon
-          :size="40">
+          :size="35">
             mdi-calendar
           </v-icon>
         </v-btn>
@@ -15,7 +15,7 @@
         text--white
         text-h6
         ml-2
-        mr-2 mt-3
+        mr-2 mt-4
         "
         >
         CalendarApp
