@@ -23,10 +23,10 @@
   ],
   "events": [
     {
-      "name": "Fix 123",
-      "start": "2021-12-14T08:00:00.000Z",
-      "end": "2021-12-14T11:00:00.000Z",
-      "color": "green",
+      "name": "Test App",
+      "start": "2021-12-15T12:00:00.000Z",
+      "end": "2021-12-15T14:00:00.000Z",
+      "color": "orange",
       "timed": true,
       "userId": 1,
       "id": 1
