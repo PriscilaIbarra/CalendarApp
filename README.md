@@ -10,7 +10,7 @@ The following web app was developed using vue, vuetify component library and vue
 ### Try :
 ```
 The app can be tested visiting the following site:
-
+Register, log and enjoy the calendar for free.
 ```
 
 Libraries:
