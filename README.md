@@ -2,10 +2,10 @@
 ![alt text](https://github.com/PriscilaIbarra/CalendarApp/blob/master/VueApp/snapshots/1.png)
 
 ```
-Is a free web calendar that helps users to schedule new events like birthday, meetings and holidays easyly.
-Using this app the user could add new events and customize them modifying dates, times and colors of each one.
-Additionally the web calendar brings different views to filter events by month, week or date to find what the
-user needs at a glance.
+Is a free web calendar that helps users to schedule new events like birthday, 
+meetings and holidays easyly. Using this app the user could add new events and customize them modifying dates,
+times and colors of each one.Additionally the web calendar brings different views to filter events by month,
+week or date to find what the user needs at a glance.
 The following web app was developed using vue, vuetify component library and vuex state managment system.
 ```
 ![alt text](https://github.com/PriscilaIbarra/CalendarApp/blob/master/VueApp/snapshots/2.png)
