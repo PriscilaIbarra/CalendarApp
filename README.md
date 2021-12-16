@@ -14,8 +14,9 @@ The following web app was developed using vue, vuetify component library and vue
 
 ### Try :
 ```
-The app can be tested visiting the following site: https://calendar-web-app.netlify.app/
+The app can be tested visiting the following site: https://calendar-web-app.netlify.app/ 
 Register, log and enjoy the calendar for free.
+FronEnd is hosted in Netlify and BackEnd (json-server api) is hosted in Heroku only for testing perpouse.
 ```
 
 Libraries:
