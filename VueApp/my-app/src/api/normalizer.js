@@ -38,7 +38,7 @@ export default {
     formatDate(dateTime){
         //YYYY-MM-DD
         var year = dateTime.getFullYear();
-        var month = (dateTime.getMonth()+1);
+        var month = (dateTime.getMonth()+1).toString().length == 1 ? ('0'+(dateTime.getMonth()+1)):(dateTime.getMonth()+1);
         var day = ( dateTime.getDate().toString().length == 1 ? ('0'+dateTime.getDate()) : dateTime.getDate() );
         return `${year}-${month}-${day}`
     },

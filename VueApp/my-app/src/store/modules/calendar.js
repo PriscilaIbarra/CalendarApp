@@ -96,13 +96,13 @@ const actions = {
     showModalFormForEditEvent({dispatch,commit},event)
     {
         try
-        {
+        {           
           commit('CLEAN_EVENT_MODAL_FORM');
           commit('HIDE_ADD_EVENT_BTN');
           commit('SHOW_EDIT_EVENT_BTN');
           commit('SHOW_DELETE_EVENT_BTN');
           commit('HIDE_SAVE_EVENT_BTN');
-          commit('CLOSE_EVENT_ERRORS_DIALOG')
+          commit('CLOSE_EVENT_ERRORS_DIALOG');
           commit('SET_EVENT',normalizer.formatEvent(event));
           commit('SHOW_EVENT_MODAL_FORM');
         }

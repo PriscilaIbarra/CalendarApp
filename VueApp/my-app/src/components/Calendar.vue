@@ -44,7 +44,7 @@
         @change="getEvents"
       ></v-calendar>
     </v-sheet>    
-    <event-modal-form/>
+    <event-modal-form :key="key"/>
   </div>
 </template>
 <script>
@@ -67,7 +67,8 @@ export default {
       { text: "Mon - Fri", value: [1, 2, 3, 4, 5] },
       { text: "Mon, Wed, Fri", value: [1, 3, 5] }
     ],
-    value: "",    
+    value: "", 
+    key:0,   
   }),
   computed:{
     ...mapState({        
@@ -77,9 +78,11 @@ export default {
   },
   methods: {
     showEvent({event}){ 
+      this.generateKey();
       this.$store.dispatch('calendar/showModalFormForEditEvent',event);
     },
-    showEventForm({date}){
+    showEventForm({date}){ 
+      this.generateKey();
       this.$store.dispatch('calendar/showModalFormForAddEvent',date);
     },
     getEvents() {
@@ -88,6 +91,9 @@ export default {
     getEventColor(event) {
       return event.color;
     },    
+    generateKey(){
+      return this.key=this.key+1;
+    }
   },
   mounted(){
     this.$store.dispatch('calendar/getEvents',this.$store.state.user.user);
