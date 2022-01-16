@@ -86,7 +86,7 @@ export default {
       this.$store.dispatch('calendar/showModalFormForAddEvent',date);
     },
     getEvents() {
-      return this.events;
+      return this.events; 
     },
     getEventColor(event) {
       return event.color;
