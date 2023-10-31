@@ -19,7 +19,21 @@ yarn dev
 
 ### Compiles and minifies for production.
 ```
-yarn build
+yarn build 
+```
+
+### Deploy to :
+```
+After run yarn build,
+inside dist folder, 
+create a file call _redirects. 
+Run:
+touch _redirects
+
+Inside _redirects write:
+/*    /index.html    200
+
+Drag and drog dist folder 
 ```
 
 ### Lints and fixes files.

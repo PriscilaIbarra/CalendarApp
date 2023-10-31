@@ -9,6 +9,16 @@
       "email": "ab@gmail.com",
       "password": "$2a$10$L9NI/NcMaz9ao6CcIjgLMePf.6yZqJg7.3Ej6JhcYawYYXcFSQ4dy",
       "id": 2
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$TTNOup4.WCa5ri6UkbIMOO3FcSvmseaDnH73njWaucAGzS2jaxL42",
+      "id": 3
+    },
+    {
+      "email": "ad@gmail.com",
+      "password": "$2a$10$BOdJ2u1OJaTPq4JesbikB.PhS.E7RHdjOW7xZnToqIHbCYL75r0hO",
+      "id": 4
     }
   ],
   "events": [
@@ -29,6 +39,33 @@
       "timed": true,
       "userId": 2,
       "id": 2
+    },
+    {
+      "name": "Testing App",
+      "start": "2023-10-17T16:00:00.000Z",
+      "end": "2023-10-17T17:00:00.000Z",
+      "color": "pink accent-2",
+      "timed": true,
+      "userId": 4,
+      "id": 3
+    },
+    {
+      "name": "Learn GraphQl",
+      "start": "2023-10-17T09:00:00.000Z",
+      "end": "2023-10-17T13:00:00.000Z",
+      "color": "green",
+      "timed": true,
+      "userId": 4,
+      "id": 4
+    },
+    {
+      "name": "Testing App",
+      "start": "2023-10-19T17:00:00.000Z",
+      "end": "2023-10-19T18:00:00.000Z",
+      "color": "orange",
+      "timed": true,
+      "userId": 4,
+      "id": 5
     }
   ],
   "logout": [

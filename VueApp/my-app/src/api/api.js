@@ -3,7 +3,7 @@ import normalizer from './normalizer'
 import store from '../store';
 
 const axiosConfig = axios.create({
-    baseURL:'https://json-server-calendar-app-e07dbd917a69.herokuapp.com',
+    baseURL:'http://localhost:3000',
     withCredentials: false,
     headers: {
     'Access-Control-Allow-Origin' : '*',
