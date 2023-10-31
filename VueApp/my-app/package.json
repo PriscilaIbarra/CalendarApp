@@ -7,10 +7,10 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "json-server": "npx json-server --watch db.json -m ./node_modules/json-server-auth",
+    "json-server": "npx json-server --watch db.json -m ./node_modules/json-server-auth -r routes.json",
     "start": "yarn serve",
-    "dev":"yarn serve & yarn json-server",
-    "test":"jest"
+    "dev": "yarn serve & yarn json-server",
+    "test": "jest"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.32",
@@ -83,6 +83,6 @@
     ],
     "transform": {
       ".*\\.(vue)$": "vue-jest"
-    }    
+    }
   }
 }

@@ -1,0 +1,6 @@
+{
+    "/users*":"/640/users$1",
+    "/events*":"/640/events$1",
+    "/logout*":"/640/logout$1",
+    "/messages*":"/640/messages$1"
+}

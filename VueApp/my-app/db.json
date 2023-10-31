@@ -2,34 +2,33 @@
   "users": [
     {
       "email": "a@gmail.com",
-      "password": "$2a$10$8qluoAJK6212L.z4g9pjfuFqCB6iQWHOdA7FVDiq.J.rUx97EQGta",
+      "password": "$2a$10$FTovZil/bQc0f6KS3VBDm.2hWELcCp.F8Go07Un6FepELDtLRroRG",
       "id": 1
     },
     {
-      "email": "asd@gmail.com",
-      "password": "$2a$10$8qwBa0eBnJsrP0ryAIOe4.Qompfc9jq5f5OU7.eshC82WoUiJZAOW",
-      "id": 2
-    },
-    {
       "email": "ab@gmail.com",
-      "password": "$2a$10$1fa1xgzxdQ2hh0PvB6tM8OMliCWtZggety.YF1ugHA13zPa4.1mm2",
-      "id": 3
-    },
-    {
-      "email": "as@gmail.com",
-      "password": "$2a$10$afX/F1bLEWhQioRUhasv7uG1uNEtMNT60O1IB2bJoQ.EtgEJ.Jete",
-      "id": 4
+      "password": "$2a$10$L9NI/NcMaz9ao6CcIjgLMePf.6yZqJg7.3Ej6JhcYawYYXcFSQ4dy",
+      "id": 2
     }
   ],
   "events": [
     {
-      "name": "Test App",
-      "start": "2021-12-15T12:00:00.000Z",
-      "end": "2021-12-15T14:00:00.000Z",
+      "name": "Testing App",
+      "start": "2023-10-10T05:00:00.000Z",
+      "end": "2023-10-10T06:00:00.000Z",
       "color": "orange",
       "timed": true,
       "userId": 1,
       "id": 1
+    },
+    {
+      "name": "Testing App",
+      "start": "2023-10-11T04:00:00.000Z",
+      "end": "2023-10-11T05:00:00.000Z",
+      "color": "pink accent-2",
+      "timed": true,
+      "userId": 2,
+      "id": 2
     }
   ],
   "logout": [

@@ -3,7 +3,7 @@ import normalizer from './normalizer'
 import store from '../store';
 
 const axiosConfig = axios.create({
-    baseURL:'https://json-server-vue-app.herokuapp.com',
+    baseURL:'https://json-server-calendar-app-e07dbd917a69.herokuapp.com',
     withCredentials: false,
     headers: {
     'Access-Control-Allow-Origin' : '*',
@@ -21,8 +21,8 @@ export default {
         }
     }
     ,
-    async registerUser(user)
-    {
+    async registerUser(user) 
+    {  
         try
         { 
           const response = await axiosConfig.post('/register',user);  
